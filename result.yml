@@ -17,15 +17,14 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
-  - url: localhost://
 components:
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
     noauthAuth:
       type: http
       scheme: noauth
+    bearerAuth:
+      type: http
+      scheme: bearer
 security:
   - bearerAuth: []
 tags:
@@ -49,12 +48,26 @@ paths:
       summary: store
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties: {}
+              example:
+                client_id: '3'
+                closing_periods:
+                  - dates:
+                      - '2022-02-03'
+                      - '2022-02-07'
+                      - '2022-03-22'
+                      - '2022-04-07'
+                    comment: Christmas holiday
+                  - dates:
+                      - '2022-05-02'
+                      - '2022-05-03'
+                      - '2022-05-04'
+                      - '2022-05-05'
+                    comment: Dashain Holiday
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: accept
           in: header
@@ -71,11 +84,13 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /000/api/closing-period/{client_id}:
+  /api/closing-period/{client_id}:
     get:
       tags:
         - Closing Period
-      summary: get
+      summary: show
+      security:
+        - noauthAuth: []
       parameters:
         - name: organization_id
           in: header
@@ -86,7 +101,50 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/closing-period/:
+    get:
+      tags:
+        - Closing Period
+      summary: all
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/closing-period/filter-clients:
+    post:
+      tags:
+        - Closing Period
+      summary: filter clients
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_ids:
+                  - 2
+                  - 3
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization_id
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -132,6 +190,7 @@ paths:
                     sunday_rate: 100
                     overtime_rate: 30
                     label: aaa
+                    employee_id: 123
                   - id: 6dccb34c-13be-4932-b4b9-db6b1e2ea8d9
                     employee_id: lasjdklwj
                     hours:
@@ -207,13 +266,14 @@ paths:
               type: object
               properties:
                 employee_id:
-                  type: string
+                  type: integer
+                  example: '1234'
                 _method:
                   type: string
                   example: put
                 start_date:
                   type: string
-                  example: '2022-02-04'
+                  example: '2022-02-05'
                 end_date:
                   type: string
                   example: '2022-06-01'
@@ -235,7 +295,7 @@ paths:
           schema:
             type: string
           required: true
-          example: 6dccb34c-13be-4932-b4b9-db6b1e2ea8d9
+          example: 666fa215-2f4b-4e77-a030-b598c6493c2c
       responses:
         '200':
           description: Successful response
@@ -259,6 +319,10 @@ paths:
           schema:
             type: string
           example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: department
+          in: query
+          schema:
+            type: string
         - name: client_id
           in: path
           schema:
@@ -271,6 +335,112 @@ paths:
             type: string
           required: true
           example: doc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/client-ids:
+    post:
+      tags:
+        - Forecast Hours
+      summary: get client ids from forecast hours
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                position: ''
+                department: ''
+                client_ids: []
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/all/client/group-type:
+    get:
+      tags:
+        - Forecast Hours
+      summary: all forecast hour data for all client for every group type
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: user_type
+          in: query
+          schema:
+            type: string
+          example: employee
+        - name: user_id
+          in: query
+          schema:
+            type: string
+        - name: current_date
+          in: query
+          schema:
+            type: string
+          example: '2022-06-28'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{forecast_hour_id}/log:
+    get:
+      tags:
+        - Forecast Hours
+      summary: log
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+          description: >-
+            This field is optional! If you send this field, it will only return
+            logs of this specific employee!
+          example: lasjdklwj
+        - name: forecast_hour_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 6dccb34c-13be-4932-b4b9-db6b1e2ea8d9
       responses:
         '200':
           description: Successful response
@@ -294,12 +464,49 @@ paths:
           schema:
             type: string
           example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: department
+          in: query
+          schema:
+            type: string
         - name: employee_id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '2'
+          example: 83dcd57b-7b9b-4347-bef9-191c07c7e430
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{employee_id}/hours-day:
+    get:
+      tags:
+        - Forecast Hours
+      summary: get all forecast hours by day for employee
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 83dcd57b-7b9b-4347-bef9-191c07c7e430
       responses:
         '200':
           description: Successful response
@@ -328,6 +535,7 @@ paths:
           schema:
             type: string
           description: this field is nullable
+          example: doc
         - name: limit
           in: query
           schema:
@@ -336,8 +544,12 @@ paths:
         - name: employee_id
           in: query
           schema:
-            type: integer
-          example: '0'
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+          example: it
       responses:
         '200':
           description: Successful response
@@ -374,8 +586,11 @@ paths:
         - name: employee_id
           in: query
           schema:
-            type: integer
-          example: '0'
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -410,7 +625,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/forecast-hour/{client_id}/{date}/daily:
+  /api/forecast-hour/{client_id}/{date}/{type}/daily:
     get:
       tags:
         - Forecast Hours
@@ -423,24 +638,35 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: department
+          in: query
+          schema:
+            type: string
+          example: it
         - name: client_id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
         - name: date
           in: path
           schema:
             type: string
           required: true
-          example: '2022-02-03'
+          example: '2022-06-03'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: doc
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/forecast-hour/{client_id}/{date}/monthly:
+  /api/forecast-hour/{client_id}/{date}/{type}/monthly:
     get:
       tags:
         - Forecast Hours
@@ -457,24 +683,35 @@ paths:
           in: header
           schema:
             type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+          example: it
         - name: client_id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
         - name: date
           in: path
           schema:
             type: string
           required: true
-          example: '2022-02-03'
+          example: '2022-06-03'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/forecast-hour/{client_id}/{date}/yearly:
+  /api/forecast-hour/{client_id}/{date}/{type}/yearly:
     get:
       tags:
         - Forecast Hours
@@ -491,6 +728,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+          example: it
         - name: client_id
           in: path
           schema:
@@ -502,13 +744,19 @@ paths:
           schema:
             type: string
           required: true
-          example: '2022-02-03'
+          example: '2022-06-03'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/budget-forecast/{client_id}/{date}:
+  /api/budget-forecast/{client_id}/{date}/{type}:
     get:
       tags:
         - Forecast Hours
@@ -537,7 +785,13 @@ paths:
           schema:
             type: string
           required: true
-          example: '2022-04-10'
+          example: '2022-06-28'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
       responses:
         '200':
           description: Successful response
