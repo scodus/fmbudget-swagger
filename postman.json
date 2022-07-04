@@ -3,7 +3,7 @@
 		"_postman_id": "138d0248-15c3-4d9a-a6b1-0d54f7ef54d0",
 		"name": "fm-budget",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16179347"
+		"_exporter_id": "19791325"
 	},
 	"item": [
 		{
@@ -13,14 +13,7 @@
 					"name": "store",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{budget_token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [
@@ -36,8 +29,13 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "{\r\n    \"client_id\":\"3\",\r\n    \"closing_periods\":\r\n        [\r\n            {\r\n            \"dates\":[\"2022-02-03\",\"2022-02-07\",\"2022-03-22\",\"2022-04-07\"],\r\n            \"comment\":\"Christmas holiday\"\r\n            },\r\n            {\r\n            \"dates\":[\"2022-05-02\",\"2022-05-03\",\"2022-05-04\",\"2022-05-05\"],\r\n            \"comment\":\"Dashain Holiday\"\r\n            }\r\n        ]\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/closing-period",
@@ -53,8 +51,11 @@
 					"response": []
 				},
 				{
-					"name": "get",
+					"name": "show",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -64,11 +65,10 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:8000/api/closing-period/:client_id",
+							"raw": "{{url}}/api/closing-period/:client_id",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"closing-period",
@@ -77,8 +77,73 @@
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "1"
+									"value": "4"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization_id",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/closing-period/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"closing-period",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter clients",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization_id",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_ids\":[2,3]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/closing-period/filter-clients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"closing-period",
+								"filter-clients"
 							]
 						}
 					},
@@ -110,7 +175,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"client_id\":2,\r\n    \"approved_by\":\"1234\",\r\n    \"type\":\"doc\",\r\n    \"forecast_hours\":[\r\n        {\r\n            \r\n            \"hours\":[\r\n                {\r\n                    \"SUNDAY\":\"10\",\r\n                    \"day\":\"SUNDAY\",\r\n                    \"hour\":\"200\"\r\n                },\r\n                {\r\n                    \"day\":\"MONDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"TUESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"WEDNESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"THURSDAY\",\r\n                    \"hour\":\"8\"\r\n                },\r\n                {\r\n                    \"day\":\"FRIDAY\",\r\n                    \"hour\":\"9\"\r\n                },\r\n                {\r\n                    \"day\":\"SATURDAY\",\r\n                    \"hour\":\"5\"\r\n                }\r\n\r\n            ],\r\n            \"position\":\"manager\",\r\n            \"department\":\"it\",\r\n            \"shift\":\"day\",\r\n            \"contracted_weeks\":20,\r\n            \"weekdays_rate\":60,\r\n            \"saturday_rate\":80,\r\n            \"sunday_rate\":100,\r\n            \"overtime_rate\":30,\r\n            \"label\":\"aaa\"\r\n        },\r\n        {\r\n            \"id\": \"6dccb34c-13be-4932-b4b9-db6b1e2ea8d9\",\r\n            \"employee_id\":\"lasjdklwj\",\r\n            \"hours\":[\r\n                {\r\n                    \"day\":\"SUNDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"MONDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"TUESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"WEDNESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"THURSDAY\",\r\n                    \"hour\":\"8\"\r\n                },\r\n                {\r\n                    \"day\":\"FRIDAY\",\r\n                    \"hour\":\"9\"\r\n                },\r\n                {\r\n                    \"day\":\"SATURDAY\",\r\n                    \"hour\":\"5\"\r\n                }\r\n            ],\r\n            \"position\":\"HR\",\r\n            \"contracted_weeks\":10,\r\n            \"weekdays_rate\":50,\r\n            \"saturday_rate\":89,\r\n            \"sunday_rate\":100,\r\n            \"overtime_rate\":20\r\n        },\r\n        {\r\n            \"hours\":[\r\n                {\r\n                    \"day\":\"SUNDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"MONDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"TUESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"WEDNESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"THURSDAY\",\r\n                    \"hour\":\"8\"\r\n                },\r\n                {\r\n                    \"day\":\"FRIDAY\",\r\n                    \"hour\":\"9\"\r\n                },\r\n                {\r\n                    \"day\":\"SATURDAY\",\r\n                    \"hour\":\"5\"\r\n                }\r\n\r\n            ],\r\n            \"contracted_weeks\":20,\r\n            \"weekdays_rate\":60,\r\n            \"saturday_rate\":80,\r\n            \"sunday_rate\":100,\r\n            \"overtime_rate\":30,\r\n            \"payment_type\":\"hourly\",\r\n            \"annual_rate\":1000.23\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"client_id\":2,\r\n    \"approved_by\":\"1234\",\r\n    \"type\":\"doc\",\r\n    \"forecast_hours\":[\r\n        {\r\n            \r\n            \"hours\":[\r\n                {\r\n                    \"SUNDAY\":\"10\",\r\n                    \"day\":\"SUNDAY\",\r\n                    \"hour\":\"200\"\r\n                },\r\n                {\r\n                    \"day\":\"MONDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"TUESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"WEDNESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"THURSDAY\",\r\n                    \"hour\":\"8\"\r\n                },\r\n                {\r\n                    \"day\":\"FRIDAY\",\r\n                    \"hour\":\"9\"\r\n                },\r\n                {\r\n                    \"day\":\"SATURDAY\",\r\n                    \"hour\":\"5\"\r\n                }\r\n\r\n            ],\r\n            \"position\":\"manager\",\r\n            \"department\":\"it\",\r\n            \"shift\":\"day\",\r\n            \"contracted_weeks\":20,\r\n            \"weekdays_rate\":60,\r\n            \"saturday_rate\":80,\r\n            \"sunday_rate\":100,\r\n            \"overtime_rate\":30,\r\n            \"label\":\"aaa\",\r\n            \"employee_id\":123\r\n        },\r\n        {\r\n            \"id\": \"6dccb34c-13be-4932-b4b9-db6b1e2ea8d9\",\r\n            \"employee_id\":\"lasjdklwj\",\r\n            \"hours\":[\r\n                {\r\n                    \"day\":\"SUNDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"MONDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"TUESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"WEDNESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"THURSDAY\",\r\n                    \"hour\":\"8\"\r\n                },\r\n                {\r\n                    \"day\":\"FRIDAY\",\r\n                    \"hour\":\"9\"\r\n                },\r\n                {\r\n                    \"day\":\"SATURDAY\",\r\n                    \"hour\":\"5\"\r\n                }\r\n            ],\r\n            \"position\":\"HR\",\r\n            \"contracted_weeks\":10,\r\n            \"weekdays_rate\":50,\r\n            \"saturday_rate\":89,\r\n            \"sunday_rate\":100,\r\n            \"overtime_rate\":20\r\n        },\r\n        {\r\n            \"hours\":[\r\n                {\r\n                    \"day\":\"SUNDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"MONDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"TUESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"WEDNESDAY\",\r\n                    \"hour\":\"10\"\r\n                },\r\n                {\r\n                    \"day\":\"THURSDAY\",\r\n                    \"hour\":\"8\"\r\n                },\r\n                {\r\n                    \"day\":\"FRIDAY\",\r\n                    \"hour\":\"9\"\r\n                },\r\n                {\r\n                    \"day\":\"SATURDAY\",\r\n                    \"hour\":\"5\"\r\n                }\r\n\r\n            ],\r\n            \"contracted_weeks\":20,\r\n            \"weekdays_rate\":60,\r\n            \"saturday_rate\":80,\r\n            \"sunday_rate\":100,\r\n            \"overtime_rate\":30,\r\n            \"payment_type\":\"hourly\",\r\n            \"annual_rate\":1000.23\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -154,7 +219,7 @@
 							"formdata": [
 								{
 									"key": "employee_id",
-									"value": "",
+									"value": "1234",
 									"type": "text"
 								},
 								{
@@ -164,7 +229,7 @@
 								},
 								{
 									"key": "start_date",
-									"value": "2022-02-04",
+									"value": "2022-02-05",
 									"type": "text"
 								},
 								{
@@ -188,7 +253,7 @@
 							"variable": [
 								{
 									"key": "forecast_hour_id",
-									"value": "6dccb34c-13be-4932-b4b9-db6b1e2ea8d9"
+									"value": "666fa215-2f4b-4e77-a030-b598c6493c2c"
 								}
 							]
 						}
@@ -234,7 +299,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:client_id/:type",
+							"raw": "{{url}}/api/forecast-hour/:client_id/:type?department=",
 							"host": [
 								"{{url}}"
 							],
@@ -244,6 +309,12 @@
 								":client_id",
 								":type"
 							],
+							"query": [
+								{
+									"key": "department",
+									"value": ""
+								}
+							],
 							"variable": [
 								{
 									"key": "client_id",
@@ -252,6 +323,189 @@
 								{
 									"key": "type",
 									"value": "doc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get client ids from forecast hours",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"position\":\"\",\r\n    \"department\":\"\",\r\n    \"client_ids\":[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/client-ids",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								"client-ids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all forecast hour data for all client for every group type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/all/client/group-type?user_type=employee&user_id=&current_date=2022-06-28",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								"all",
+								"client",
+								"group-type"
+							],
+							"query": [
+								{
+									"key": "user_type",
+									"value": "employee"
+								},
+								{
+									"key": "user_id",
+									"value": ""
+								},
+								{
+									"key": "current_date",
+									"value": "2022-06-28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "log",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/:forecast_hour_id/log?employee_id=lasjdklwj",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								":forecast_hour_id",
+								"log"
+							],
+							"query": [
+								{
+									"key": "employee_id",
+									"value": "lasjdklwj",
+									"description": "This field is optional! If you send this field, it will only return logs of this specific employee!"
+								}
+							],
+							"variable": [
+								{
+									"key": "forecast_hour_id",
+									"value": "6dccb34c-13be-4932-b4b9-db6b1e2ea8d9"
 								}
 							]
 						}
@@ -297,7 +551,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:employee_id",
+							"raw": "{{url}}/api/forecast-hour/:employee_id?department=",
 							"host": [
 								"{{url}}"
 							],
@@ -306,10 +560,81 @@
 								"forecast-hour",
 								":employee_id"
 							],
+							"query": [
+								{
+									"key": "department",
+									"value": ""
+								}
+							],
 							"variable": [
 								{
 									"key": "employee_id",
-									"value": "2"
+									"value": "83dcd57b-7b9b-4347-bef9-191c07c7e430"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all forecast hours by day for employee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/:employee_id/hours-day?department=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								":employee_id",
+								"hours-day"
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "employee_id",
+									"value": "83dcd57b-7b9b-4347-bef9-191c07c7e430"
 								}
 							]
 						}
@@ -355,7 +680,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/all?type=&limit=&employee_id=0",
+							"raw": "{{url}}/api/forecast-hour/all?type=doc&limit=&employee_id=&department=it",
 							"host": [
 								"{{url}}"
 							],
@@ -367,7 +692,7 @@
 							"query": [
 								{
 									"key": "type",
-									"value": "",
+									"value": "doc",
 									"description": "this field is nullable"
 								},
 								{
@@ -377,7 +702,11 @@
 								},
 								{
 									"key": "employee_id",
-									"value": "0"
+									"value": ""
+								},
+								{
+									"key": "department",
+									"value": "it"
 								}
 							]
 						}
@@ -423,7 +752,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/end-date?type=&limit=&employee_id=0",
+							"raw": "{{url}}/api/forecast-hour/end-date?type=&limit=&employee_id=&department=",
 							"host": [
 								"{{url}}"
 							],
@@ -445,7 +774,11 @@
 								},
 								{
 									"key": "employee_id",
-									"value": "0"
+									"value": ""
+								},
+								{
+									"key": "department",
+									"value": ""
 								}
 							]
 						}
@@ -529,7 +862,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:client_id/:date/daily",
+							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/daily?department=it",
 							"host": [
 								"{{url}}"
 							],
@@ -538,16 +871,27 @@
 								"forecast-hour",
 								":client_id",
 								":date",
+								":type",
 								"daily"
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": "it"
+								}
 							],
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "1"
+									"value": "2"
 								},
 								{
 									"key": "date",
-									"value": "2022-02-03"
+									"value": "2022-06-03"
+								},
+								{
+									"key": "type",
+									"value": "doc"
 								}
 							]
 						}
@@ -593,7 +937,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:client_id/:date/monthly",
+							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/monthly?department=it",
 							"host": [
 								"{{url}}"
 							],
@@ -602,16 +946,27 @@
 								"forecast-hour",
 								":client_id",
 								":date",
+								":type",
 								"monthly"
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": "it"
+								}
 							],
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "1"
+									"value": "2"
 								},
 								{
 									"key": "date",
-									"value": "2022-02-03"
+									"value": "2022-06-03"
+								},
+								{
+									"key": "type",
+									"value": "all"
 								}
 							]
 						}
@@ -657,7 +1012,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:client_id/:date/yearly",
+							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/yearly?department=it",
 							"host": [
 								"{{url}}"
 							],
@@ -666,7 +1021,14 @@
 								"forecast-hour",
 								":client_id",
 								":date",
+								":type",
 								"yearly"
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": "it"
+								}
 							],
 							"variable": [
 								{
@@ -675,7 +1037,11 @@
 								},
 								{
 									"key": "date",
-									"value": "2022-02-03"
+									"value": "2022-06-03"
+								},
+								{
+									"key": "type",
+									"value": "all"
 								}
 							]
 						}
@@ -721,7 +1087,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/budget-forecast/:client_id/:date",
+							"raw": "{{url}}/api/budget-forecast/:client_id/:date/:type",
 							"host": [
 								"{{url}}"
 							],
@@ -729,7 +1095,15 @@
 								"api",
 								"budget-forecast",
 								":client_id",
-								":date"
+								":date",
+								":type"
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": "it",
+									"disabled": true
+								}
 							],
 							"variable": [
 								{
@@ -738,7 +1112,11 @@
 								},
 								{
 									"key": "date",
-									"value": "2022-04-10"
+									"value": "2022-06-28"
+								},
+								{
+									"key": "type",
+									"value": "all"
 								}
 							]
 						}
