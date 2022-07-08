@@ -273,10 +273,15 @@ paths:
                   example: put
                 start_date:
                   type: string
-                  example: '2022-02-05'
+                  example: '2022-06-07'
                 end_date:
                   type: string
-                  example: '2022-06-01'
+                is_head_office:
+                  type: integer
+                  example: '0'
+                allowed_client_ids[]:
+                  type: integer
+                  example: '3'
       security:
         - noauthAuth: []
       parameters:
@@ -351,9 +356,12 @@ paths:
             schema:
               type: object
               example:
-                position: ''
-                department: ''
-                client_ids: []
+                positions:
+                  - servant
+                departments: []
+                client_ids:
+                  - 2
+                  - 1
       security:
         - bearerAuth: []
       parameters:
@@ -465,6 +473,10 @@ paths:
             type: string
           example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
         - name: department
+          in: query
+          schema:
+            type: string
+        - name: client_id
           in: query
           schema:
             type: string
@@ -642,7 +654,6 @@ paths:
           in: query
           schema:
             type: string
-          example: it
         - name: client_id
           in: path
           schema:
@@ -687,13 +698,16 @@ paths:
           in: query
           schema:
             type: string
-          example: it
+        - name: employee_id
+          in: query
+          schema:
+            type: string
         - name: client_id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '2'
+          example: all
         - name: date
           in: path
           schema:
