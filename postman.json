@@ -229,12 +229,27 @@
 								},
 								{
 									"key": "start_date",
-									"value": "2022-02-05",
+									"value": "2022-06-07",
 									"type": "text"
 								},
 								{
 									"key": "end_date",
-									"value": "2022-06-01",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "is_head_office",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "allowed_client_ids[]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "allowed_client_ids[]",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -357,7 +372,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"position\":\"\",\r\n    \"department\":\"\",\r\n    \"client_ids\":[]\r\n}",
+							"raw": "{\r\n    \"positions\":[\"servant\"],\r\n    \"departments\":[],\r\n    \"client_ids\":[2,1]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -551,7 +566,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:employee_id?department=",
+							"raw": "{{url}}/api/forecast-hour/:employee_id?department=&client_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -563,6 +578,10 @@
 							"query": [
 								{
 									"key": "department",
+									"value": ""
+								},
+								{
+									"key": "client_id",
 									"value": ""
 								}
 							],
@@ -862,7 +881,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/daily?department=it",
+							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/daily?department=",
 							"host": [
 								"{{url}}"
 							],
@@ -877,7 +896,7 @@
 							"query": [
 								{
 									"key": "department",
-									"value": "it"
+									"value": ""
 								}
 							],
 							"variable": [
@@ -937,7 +956,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/monthly?department=it",
+							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/monthly?department=&employee_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -952,13 +971,17 @@
 							"query": [
 								{
 									"key": "department",
-									"value": "it"
+									"value": ""
+								},
+								{
+									"key": "employee_id",
+									"value": ""
 								}
 							],
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "2"
+									"value": "all"
 								},
 								{
 									"key": "date",
