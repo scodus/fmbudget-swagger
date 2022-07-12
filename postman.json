@@ -394,7 +394,7 @@
 					"response": []
 				},
 				{
-					"name": "get client ids from forecast hours Copy",
+					"name": "get total forecast hours of employee by day",
 					"request": {
 						"auth": {
 							"type": "bearer",

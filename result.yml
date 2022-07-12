@@ -384,7 +384,7 @@ paths:
     post:
       tags:
         - Forecast Hours
-      summary: get client ids from forecast hours Copy
+      summary: get total forecast hours of employee by day
       requestBody:
         content:
           application/json:
