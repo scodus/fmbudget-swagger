@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Phase One
-  description: Phase One
+  title: YBC - Fm budget
+  description: 'Base url: https://scodus.dev'
   version: '1.0'
   x-logo:
     url: https://github.com/joolfe/logoBanner.png
@@ -968,6 +968,10 @@ paths:
           example: application/json
         - name: organization_id
           in: header
+          schema:
+            type: string
+        - name: ''
+          in: query
           schema:
             type: string
       responses:
