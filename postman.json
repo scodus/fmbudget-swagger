@@ -23,7 +23,7 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
+								"key": "organization-id",
 								"value": "9c8d0bb6-d37d-4da6-9854-553a9edaa547",
 								"type": "text"
 							}
@@ -54,13 +54,20 @@
 					"name": "show",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjEyNDg1MTYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJCaXNob3ciLCJvcmdzIjp7IjMzZDVmYzU5LTk2M2QtNGJiNi1iNDI5LTExN2VlNjAxODI2ZCI6eyJlbXBsb3llZSI6eyJlbXBsb3llZV9mdWxsX25hbWUiOiJCaXNob3cgIFJhdXQiLCJlbXBsb3llZV9pZCI6ImMzNDA4ZTUzLWQzZmEtNDQyNS1iYzg5LTQwYTA5MDA1NjU2ZCIsInJvbGVOYW1lcyI6bnVsbCwic2NvcGVzIjpbImZtLnVzZXIuY3JlYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5yb2xlLmNyZWF0ZSIsImZtLnJvbGUudXBkYXRlIiwiZm0uZW1wbG95ZWUubGlzdCIsImZtLmRlQWN0aXZlRW1wbG95ZWUuY3JlYXRlIiwiZm0uZGVBY3RpdmVFbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWVIb2xpZGF5LmNyZWF0ZSIsImZtLmVtcGxveWVlSG9saWRheS5saXN0IiwiZm0uZW1wbG95ZWVUcmFuc2Zlci5jcmVhdGUiLCJmbS5lbXBsb3llZVRyYW5zZmVyLmxpc3QiLCJmbS5lbXBsb3llZUxlYXZlci5jcmVhdGUiLCJmbS5lbXBsb3llZUxlYXZlci5saXN0IiwiZm0uZW1wbG95ZWVUcmFpbmluZy5jcmVhdGUiLCJmbS5lbXBsb3llZVRyYWluaW5nLmxpc3QiLCJmbS5lbXBsb3llZVRpbWVzaGVldC5jcmVhdGUiLCJmbS5lbXBsb3llZVRpbWVzaGVldC5saXN0IiwiZm0uZW1wbG95ZWVGZWVkQmFjay5jcmVhdGUiLCJmbS5lbXBsb3llZUZlZWRCYWNrLmxpc3QiLCJmbS5lbXBsb3llZUhpc3RvcnkuY3JlYXRlIiwiZm0uZW1wbG95ZWVIaXN0b3J5Lmxpc3QiLCJmbS5lbXBsb3llZUNvbW11bmljYXRpb24uY3JlYXRlIiwiZm0uZW1wbG95ZWVDb21tdW5pY2F0aW9uLmxpc3QiLCJmbS5lbXBsb3llZUFwcGxpY2F0aW9uRm9ybS5jcmVhdGUiLCJmbS5lbXBsb3llZUFwcGxpY2F0aW9uRm9ybS5saXN0IiwiZm0uYWN0aXZlQ2xpZW50LmNyZWF0ZSIsImZtLmFjdGl2ZUNsaWVudC5saXN0IiwiZm0ubmV3Q2xpZW50LmNyZWF0ZSIsImZtLm5ld0NsaWVudC5saXN0IiwiZm0uZGVBY3RpdmVDbGllbnQuY3JlYXRlIiwiZm0uZGVBY3RpdmVDbGllbnQubGlzdCIsImZtLmNsaWVudEZlZWRiYWNrLmNyZWF0ZSIsImZtLmNsaWVudEZlZWRiYWNrLmxpc3QiLCJmbS5jbGllbnRJbnZvaWNlLmNyZWF0ZSIsImZtLmNsaWVudEludm9pY2UubGlzdCIsImZtLmNsaWVudENQLmNyZWF0ZSIsImZtLmNsaWVudENQLmxpc3QiLCJmbS5jbGllbnRUaW1lc2hlZXQuY3JlYXRlIiwiZm0uY2xpZW50VGltZXNoZWV0Lmxpc3QiLCJmbS5jbGllbnQuZ2V0LWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5jbGllbnQuY3JlYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5jbGllbnRDb21tdW5pY2F0aW9uLmNyZWF0ZSIsImZtLmNsaWVudENvbW11bmljYXRpb24ubGlzdCIsImZtLmNsaWVudEludmVudG9yeS5jcmVhdGUiLCJmbS5jbGllbnRJbnZlbnRvcnkubGlzdCIsImZtLmNsaWVudGFic2Nvdi5jcmVhdGUiLCJmbS5jbGllbnRhYnNjb3YubGlzdCIsImZtLmNsaWVudFZhY2FuY3kuY3JlYXRlIiwiZm0uY2xpZW50VmFjYW5jeS5saXN0IiwiZm0uY2xpZW50VmFyaWF0aW9uLmNyZWF0ZSIsImZtLmNsaWVudFZhcmlhdGlvbi5saXN0IiwiZm0uYXR0ZW5kYW5jZS5jcmVhdGUiLCJmbS5hdHRlbmRhbmNlLmxpc3QiLCJmbS5hdHRlbmRhbmNlQ2xpZW50LmNyZWF0ZSIsImZtLmF0dGVuZGFuY2VDbGllbnQubGlzdCIsImZtLmF0dGVuZGFuY2VNb2JpbGUuY3JlYXRlIiwiZm0uYXR0ZW5kYW5jZU1vYmlsZS5saXN0IiwiZm0uYXR0ZW5kYW5jZVZhcmlhdGlvbi5jcmVhdGUiLCJmbS5hdHRlbmRhbmNlVmFyaWF0aW9uLmxpc3QiLCJmbS5hdHRlbmRhbmNlUGVyaW9kaWMuY3JlYXRlIiwiZm0uYXR0ZW5kYW5jZVBlcmlvZGljLmxpc3QiLCJmbS5hdHRlbmRhbmNlQ29ycmVjdGlvbi5jcmVhdGUiLCJmbS5hdHRlbmRhbmNlQ29ycmVjdGlvbi5saXN0IiwiZm0uY3NJbnZvaWNlLmNyZWF0ZSIsImZtLmNzSW52b2ljZS5saXN0IiwiZm0uY3NFbXBsb3llZS5jcmVhdGUiLCJmbS5jc0VtcGxveWVlLmxpc3QiLCJmbS5jc0NvbW11bmljYXRpb24uY3JlYXRlIiwiZm0uY3NDb21tdW5pY2F0aW9uLmxpc3QiLCJmbS5jc0hlYWx0aC5jcmVhdGUiLCJmbS5jc0hlYWx0aC5saXN0IiwiZm0uY3NGZWVkYmFjay5jcmVhdGUiLCJmbS5jc0ZlZWRiYWNrLmxpc3QiLCJmbS5jc1BsYW5uZXIuY3JlYXRlIiwiZm0uY3NQbGFubmVyLmxpc3QiLCJmbS5jc0RvY3VtZW50LmNyZWF0ZSIsImZtLmNzRG9jdW1lbnQubGlzdCIsImZtLmNzT3RoZXJzLmNyZWF0ZSIsImZtLmNzT3RoZXJzLmxpc3QiLCJmbS5hY2NvdW50U2l0ZUJ1ZGdldC5jcmVhdGUiLCJmbS5hY2NvdW50U2l0ZUJ1ZGdldC5saXN0IiwiZm0uYWNjb3VudENvbXBhbnlCdWRnZXQuY3JlYXRlIiwiZm0uYWNjb3VudENvbXBhbnlCdWRnZXQubGlzdCIsImZtLmFjY291bnRCb29rS2VlcGluZy5jcmVhdGUiLCJmbS5hY2NvdW50Qm9va0tlZXBpbmcubGlzdCIsImZtLmFjY291bnRTaXRlUG5sLmNyZWF0ZSIsImZtLmFjY291bnRTaXRlUG5sLmxpc3QiLCJmbS5hY2NvdW50T2ZmaWNlLmNyZWF0ZSIsImZtLmFjY291bnRPZmZpY2UubGlzdCIsImZtLmFjY291bnRDb21wYW55UG5sLmNyZWF0ZSIsImZtLmFjY291bnRDb21wYW55UG5sLmxpc3QiLCJmbS5hY2NvdW50UGF5cm9sbC5jcmVhdGUiLCJmbS5hY2NvdW50UGF5cm9sbC5saXN0IiwiZm0uYWNjb3VudEludm9pY2UuY3JlYXRlIiwiZm0uYWNjb3VudEludm9pY2UubGlzdCIsImZtLmNzci5jcmVhdGUiLCJmbS5jc3IubGlzdCIsImZtLnNwZWNBcmVhLmNyZWF0ZSIsImZtLnNwZWNBcmVhLmxpc3QiLCJmbS5zcGVjRnJlcS5jcmVhdGUiLCJmbS5zcGVjRnJlcS5saXN0IiwiZm0uc3BlY1Jvb20uY3JlYXRlIiwiZm0uc3BlY1Jvb20ubGlzdCIsImZtLm9jR2xvYmFsLmNyZWF0ZSIsImZtLm9jR2xvYmFsLmxpc3QiLCJmbS5vY0VtcGxveWVlLmNyZWF0ZSIsImZtLm9jRW1wbG95ZWUubGlzdCIsImZtLm9jUG9zaXRpb24uY3JlYXRlIiwiZm0ub2NQb3NpdGlvbi5saXN0IiwiZm0uaGVhZE9mZmljZS5jcmVhdGUiLCJmbS5oZWFkT2ZmaWNlLmxpc3QiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5qb2J0eXBlLmNyZWF0ZSIsImZtLmFyZWEubGlzdCIsImZtLnN1YmFyZWEubGlzdCIsImZtLnJlZ2lvbi5saXN0IiwiZm0uZW1wbG95ZWUtY2hlY2suY3JlYXRlIiwiZm0uZW1wbG95ZWUtY2hlY2suZGV0YWlsIiwiZm0udGFzay5jcmVhdGUiLCJmbS50YXNrLmxpc3QiLCJmbS50YXNrLnVwZGF0ZSIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmxpc3QtYnktY2xpZW50IiwiZm0udGFzay5saXN0LWJ5LWVtcGxveWVlIiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLmxpc3QiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmlzc3VlLmNyZWF0ZSIsImZtLmlzc3VlLmxpc3QiLCJmbS5pc3N1ZS51cGRhdGUiLCJmbS5ub3Rlcy5jcmVhdGUiLCJmbS5ub3Rlcy5saXN0IiwiZm0ubm90ZXMudXBkYXRlIiwiZm0udGFyZ2V0LmNyZWF0ZSIsImZtLnRhcmdldC5saXN0IiwiZm0udGFyZ2V0LnVwZGF0ZSIsImZtLnBsYW5uZXIuY3JlYXRlIiwiZm0ucGxhbm5lci5saXN0IiwiZm0ucGxhbm5lci51cGRhdGUiLCJmbS5jb21tdW5pY2F0aW9uLmNyZWF0ZSIsImZtLmNvbW11bmljYXRpb24ubGlzdCIsImZtLmNvbW11bmljYXRpb24udXBkYXRlIiwiZm0udGltZXNoZWV0LmNyZWF0ZSIsImZtLnRpbWVzaGVldC5saXN0IiwiZm0udGltZXNoZWV0LnVwZGF0ZSIsImZtLmdsb2JhbC1jaGNlay51cGRhdGUiLCJmbS5nbG9iYWwtY2hlY2sudXBkYXRlIiwiZm0uZW1wbG95ZWUtY2hlY2subGlzdCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5lbXBsb3llZS5kZXRhaWwiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQubGVhZCIsImZtLmNsaWVudC5wcm9zcGVjdCIsImZtLmNsaWVudC5saXN0IiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLm5ld0VtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmNsaWVudC5jcmVhdGUiLCJmbS5jbGllbnQudXBkYXRlLXN0YXR1cyIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5kZXBhcnRtZW50LnVwZGF0ZSIsImZtLmFyZWEuY3JlYXRlIiwiZm0uYXJlYS51cGRhdGUiLCJmbS50YXNrLmNvcnJlY3Rpb24iLCJmbS50YXNrLmNvcnJlY3Rpb24ubGlzdCIsImZtLnRhc2suY29ycmVjdGlvbi5hcHByb3ZlIl19LCJvcmdfbmFtZSI6Ik5ldyBPcmdhbml6YXRpb24ifSwiZDllNGE0MzUtZjliMy00ZmRiLWFlYjQtMzA4OTQyYzQ3ZDNiIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6ImFjZTIyMDM5LWJlYmEtNDc5ZC04MzNjLWQyODc0NzllMTU0YyIsImVtcGxveWVlX2lkIjoiYWNlMjIwMzktYmViYS00NzlkLTgzM2MtZDI4NzQ3OWUxNTRjIiwicm9sZU5hbWVzIjpbIiJdLCJzY29wZXMiOltdfSwib3JnX25hbWUiOiJPcmcgVHdvIn19LCJ1c2VyX2lkIjoiYWU3Yjc4M2ItZDFjYS00MzA5LThmZGEtYzQzNWQ4MzA3ZGM1IiwidXNlcm5hbWUiOiJiaXNob3dAZ21haWwuY29tIn19.II-ZOraKo6ZL-Z-T0leCWgcw_rva5Wz73OVu0M6obFdEPDkXCfvfxBNCIbbJxDDqK8pUSiyThB9PHTh3aTiN9ML3r9bCvayNr5Aveu7ZLrws0GAJ8APjDfS15wUjDKFL_ovHW-bfS_76zFFwA1CAWRIdVGBhrox5aI78c6c_Xmc",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "9c8d0bb6-d37d-4da6-9854-553a9edaa547",
 								"type": "text"
 							}
 						],
@@ -77,7 +84,7 @@
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "4"
+									"value": "3"
 								}
 							]
 						}
@@ -94,7 +101,7 @@
 						"header": [
 							{
 								"key": "organization_id",
-								"value": "",
+								"value": "9c8d0bb6-d37d-4da6-9854-553a9edaa547",
 								"type": "text"
 							}
 						],
@@ -122,7 +129,7 @@
 						"header": [
 							{
 								"key": "organization_id",
-								"value": "",
+								"value": "9c8d0bb6-d37d-4da6-9854-553a9edaa547",
 								"type": "text"
 							}
 						],
@@ -158,7 +165,14 @@
 					"name": "store",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [
@@ -169,7 +183,7 @@
 							},
 							{
 								"key": "organization-id",
-								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
@@ -268,7 +282,7 @@
 							"variable": [
 								{
 									"key": "forecast_hour_id",
-									"value": "666fa215-2f4b-4e77-a030-b598c6493c2c"
+									"value": "6dccb34c-13be-4932-b4b9-db6b1e2ea8d9"
 								}
 							]
 						}
@@ -286,7 +300,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso",
+									"value": "{{budget_token}}",
 									"type": "string"
 								}
 							]
@@ -300,7 +314,7 @@
 							},
 							{
 								"key": "organization-id",
-								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
@@ -333,12 +347,61 @@
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "2"
+									"value": "all"
 								},
 								{
 									"key": "type",
 									"value": "doc"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start end date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employees\": [\r\n        {\r\n            \"client_id\" : 2,\r\n            \"employee_id\" : 123,\r\n            \"start_date\" : \"2022-02-03\",\r\n            \"end_date\" : \"2023-05-09\"\r\n        },\r\n        {\r\n            \"client_id\" : 2,\r\n            \"employee_id\" : 1,\r\n            \"start_date\" : \"2022-04-03\",\r\n            \"end_date\" : \"2023-08-09\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/start-end-date",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								"start-end-date"
 							]
 						}
 					},
@@ -394,7 +457,7 @@
 					"response": []
 				},
 				{
-					"name": "get total forecast hours of employee by day",
+					"name": "get total forecast hours of employee by date",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -421,7 +484,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"employee_ids\" : [ \"lasjdklwj\",\"1b2687bc-fe7a-43d6-b24e-40d67b02674e\"]\r\n}",
+							"raw": "{\r\n    \"employee_ids\" : [\"123\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -450,10 +513,7 @@
 					"response": []
 				},
 				{
-					"name": "all forecast hour data for all client for every group type",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "get total forecast hours of employee by days",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -465,7 +525,7 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "accept",
@@ -480,6 +540,120 @@
 						],
 						"body": {
 							"mode": "raw",
+							"raw": "{\r\n    \"employee_ids\" : \"all\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/employee-forecast-hours/days",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								"employee-forecast-hours",
+								"days"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get total forecast hours of employee by days Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dates\" : [\"2022-09-15\", \"2022-09-17\", \"2022-09-20\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/:client_id/:employee_id/forecast-hours",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								":client_id",
+								":employee_id",
+								"forecast-hours"
+							],
+							"variable": [
+								{
+									"key": "client_id",
+									"value": "2"
+								},
+								{
+									"key": "employee_id",
+									"value": "1234"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all forecast hour data for all client for every group type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
 							"raw": "",
 							"options": {
 								"raw": {
@@ -488,7 +662,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/all/client/group-type?user_type=employee&user_id=&current_date=2022-06-28",
+							"raw": "{{url}}/api/forecast-hour/all/client/group-type?user_type=employee&user_id=&current_date=2022-06-28&type=",
 							"host": [
 								"{{url}}"
 							],
@@ -511,6 +685,15 @@
 								{
 									"key": "current_date",
 									"value": "2022-06-28"
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "2022-02-02",
+									"disabled": true
 								}
 							]
 						}
@@ -622,7 +805,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:employee_id?department=&client_id=",
+							"raw": "{{url}}/api/forecast-hour/:employee_id?department=&client_id=&paginate=",
 							"host": [
 								"{{url}}"
 							],
@@ -639,12 +822,16 @@
 								{
 									"key": "client_id",
 									"value": ""
+								},
+								{
+									"key": "paginate",
+									"value": ""
 								}
 							],
 							"variable": [
 								{
 									"key": "employee_id",
-									"value": "83dcd57b-7b9b-4347-bef9-191c07c7e430"
+									"value": "all"
 								}
 							]
 						}
@@ -709,7 +896,7 @@
 							"variable": [
 								{
 									"key": "employee_id",
-									"value": "83dcd57b-7b9b-4347-bef9-191c07c7e430"
+									"value": "123"
 								}
 							]
 						}
@@ -755,7 +942,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/all?type=doc&limit=&employee_id=&department=it",
+							"raw": "{{url}}/api/forecast-hour/all?type=doc&limit=&employee_id=&department=&client_id=&paginate=0",
 							"host": [
 								"{{url}}"
 							],
@@ -778,12 +965,20 @@
 								{
 									"key": "employee_id",
 									"value": "",
-									"description": "nullable"
+									"description": "nullable, values: active, inactive, any employee_id"
 								},
 								{
 									"key": "department",
-									"value": "it",
+									"value": "",
 									"description": "nullable"
+								},
+								{
+									"key": "client_id",
+									"value": ""
+								},
+								{
+									"key": "paginate",
+									"value": "0"
 								}
 							]
 						}
@@ -937,7 +1132,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso",
+									"value": "{{budget_token}}",
 									"type": "string"
 								}
 							]
@@ -951,7 +1146,7 @@
 							},
 							{
 								"key": "organization-id",
-								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
@@ -977,7 +1172,7 @@
 							"variable": [
 								{
 									"key": "forecast_hour_id",
-									"value": "efc17db6-dfaf-4ba8-bc3b-cfcc790f749d"
+									"value": "0b6690d3-9a48-4b23-b878-cfc004b432c2"
 								}
 							]
 						}
@@ -998,6 +1193,11 @@
 							{
 								"key": "accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
 								"type": "text"
 							}
 						],
@@ -1027,7 +1227,7 @@
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "2"
+									"value": "all"
 								},
 								{
 									"key": "date",
@@ -1035,7 +1235,7 @@
 								},
 								{
 									"key": "type",
-									"value": "doc"
+									"value": "all"
 								}
 							]
 						}
@@ -1066,8 +1266,8 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
 								"type": "text"
 							}
 						],
@@ -1081,7 +1281,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/monthly?department=&employee_id=",
+							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/monthly?department=&employee_id=&start_date=2022-02-10",
 							"host": [
 								"{{url}}"
 							],
@@ -1101,6 +1301,10 @@
 								{
 									"key": "employee_id",
 									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "2022-02-10"
 								}
 							],
 							"variable": [
@@ -1110,7 +1314,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2022-06-03"
+									"value": "2022-02-06"
 								},
 								{
 									"key": "type",
@@ -1160,7 +1364,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/yearly?department=&employee_id=lasjdklwj",
+							"raw": "{{url}}/api/forecast-hour/:client_id/:date/:type/yearly?department=&employee_id=&start_date=2022-02-10",
 							"host": [
 								"{{url}}"
 							],
@@ -1179,13 +1383,17 @@
 								},
 								{
 									"key": "employee_id",
-									"value": "lasjdklwj"
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "2022-02-10"
 								}
 							],
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "2"
+									"value": "all"
 								},
 								{
 									"key": "date",
@@ -1194,6 +1402,162 @@
 								{
 									"key": "type",
 									"value": "all"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forecast hour yearly employee combined",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/:date/yearly/employee-combined?client_id=&type=&department=&employee_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								":date",
+								"yearly",
+								"employee-combined"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "department",
+									"value": ""
+								},
+								{
+									"key": "employee_id",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "date",
+									"value": "2022-01-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forecast hour monthly employee combined",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/forecast-hour/:date/monthly/employee-combined?client_id=&type=&department=&employee_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forecast-hour",
+								":date",
+								"monthly",
+								"employee-combined"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "department",
+									"value": ""
+								},
+								{
+									"key": "employee_id",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "date",
+									"value": "2022-10-03"
 								}
 							]
 						}
@@ -1260,15 +1624,15 @@
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "1"
+									"value": "2"
 								},
 								{
 									"key": "date",
-									"value": "2022-06-28"
+									"value": "2022-02-08"
 								},
 								{
 									"key": "type",
-									"value": "all"
+									"value": "doc"
 								}
 							]
 						}
@@ -1304,14 +1668,14 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"client_id\":2,\r\n    \"approved_by\":\"123\",\r\n    \"type\": \"variant\",\r\n    \"inventory_forecasts\":[\r\n        {\r\n            \"id\":\"83afc4c9-4ab2-42ce-b9cd-c99906c29682\",\r\n            \"title\":\"Store Budget\",\r\n            \"yearly_budget\":30000,\r\n            \"frequency\":30\r\n        },\r\n        {\r\n            \"id\":\"725132f6-0121-4cc8-b57f-c179c9f2c1e0\",\r\n            \"title\":\"Machinery Maintainance\",\r\n            \"yearly_budget\":2000,\r\n            \"frequency\":20\r\n        },{\r\n            \"id\":\"c3d53773-5eae-4d28-b68f-6f88b9ed8ffc\",\r\n            \"title\":\"Consumable\",\r\n            \"yearly_budget\":2000,\r\n            \"frequency\":10\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"client_id\":2,\r\n    \"approved_by\":\"123\",\r\n    \"type\": \"variation\",\r\n    \"inventory_forecasts\":[\r\n        {\r\n            \"id\":\"83afc4c9-4ab2-42ce-b9cd-c99906c29682\",\r\n            \"title\":\"Store Budget\",\r\n            \"yearly_budget\":30000,\r\n            \"frequency\":30,\r\n            \"percent\" : 0\r\n        },\r\n        {\r\n            \"id\":\"725132f6-0121-4cc8-b57f-c179c9f2c1e0\",\r\n            \"title\":\"Machinery Maintainance\",\r\n            \"yearly_budget\":2000,\r\n            \"frequency\":20\r\n        },{\r\n            \"id\":\"c3d53773-5eae-4d28-b68f-6f88b9ed8ffc\",\r\n            \"title\":\"Consumable\",\r\n            \"yearly_budget\":2000,\r\n            \"frequency\":10\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1422,7 +1786,7 @@
 							},
 							{
 								"key": "organization_id",
-								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
@@ -1470,7 +1834,7 @@
 								},
 								{
 									"key": "type",
-									"value": "variant"
+									"value": "variation"
 								}
 							]
 						}
@@ -1491,8 +1855,8 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -1534,7 +1898,7 @@
 							"variable": [
 								{
 									"key": "inventory_forecast_id",
-									"value": "45f23641-d52e-4dde-8b5b-eb330bae29d6"
+									"value": "725132f6-0121-4cc8-b57f-c179c9f2c1e0"
 								}
 							]
 						}
@@ -1552,8 +1916,8 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -1574,7 +1938,7 @@
 							"variable": [
 								{
 									"key": "inventory_forecast_id",
-									"value": "45f23641-d52e-4dde-8b5b-eb330bae29d6"
+									"value": "725132f6-0121-4cc8-b57f-c179c9f2c1e0"
 								}
 							]
 						}
@@ -1600,14 +1964,14 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \"client_id\":\"123\",\r\n\"approved_by\":\"123\",\r\n    \"type\": \"doc\",\r\n    \"overhead_forecasts\":[\r\n        {\r\n            \"id\":\"11b07a8b-ffec-4acb-88db-bf1255f1038f\",\r\n            \"forecast_hour_id\":\"asdef\",\r\n            \"title\":\"Pension\",\r\n            \"value\":100\r\n        },\r\n        {\r\n            \"id\":\"3fbf0eb7-8291-4815-9578-3b4b271cdd70\",\r\n            \"forecast_hour_id\":\"wadw\",\r\n            \"title\":\"Holiday\",\r\n            \"value\":110\r\n        },\r\n        {\r\n            \"id\":\"bd358752-9515-4713-8adc-76ee428c21cd\",\r\n            \"forecast_hour_id\":\"asdwa\",\r\n            \"title\":\"Sick Pay\",\r\n            \"value\":120\r\n        }\r\n    ]\r\n}",
+							"raw": "{   \r\n    \"client_id\": \"abc\",\r\n    \"approved_by\":\"123\",\r\n    \"title\": \"Holiday\",\r\n    \"overhead_forecasts\":[\r\n        {\r\n            \"id\":\"11b07a8b-ffec-4acb-88db-bf1255f1038f\",\r\n            \"forecast_hour_id\":\"2d44bc7d-1a94-4e1b-88a5-86741dc1fad0\",\r\n            \"value\":100,\r\n            \"entitled_hour\": 2,\r\n            \"entitled_day\": 3.22,\r\n            \"frequency\": 8\r\n        },\r\n        {\r\n            \"id\":\"3fbf0eb7-8291-4815-9578-3b4b271cdd70\",\r\n            \"forecast_hour_id\":\"2d44bc7d-1a94-4e1b-88a5-86741dc1fad0\",\r\n            \"value\":110,\r\n            \"entitled_hour\": 2,\r\n            \"threshold\": 22,\r\n            \"frequency\": 8\r\n        },\r\n        {\r\n            \"id\":\"bd358752-9515-4713-8adc-76ee428c21cd\",\r\n            \"forecast_hour_id\":\"2d44bc7d-1a94-4e1b-88a5-86741dc1fad0\",\r\n            \"value\":120,\r\n            \"entitled_hour\": 3,\r\n            \"frequency\": 8\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1709,8 +2073,8 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -1731,7 +2095,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": null
+									"value": "3fbf0eb7-8291-4815-9578-3b4b271cdd70"
 								}
 							]
 						}
@@ -1747,8 +2111,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							},
 							{
@@ -1758,7 +2122,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/overhead-forecast/:client_id/:type/all",
+							"raw": "{{url}}/api/overhead-forecast/:client_id/index?title=&type=",
 							"host": [
 								"{{url}}"
 							],
@@ -1766,17 +2130,68 @@
 								"api",
 								"overhead-forecast",
 								":client_id",
-								":type",
-								"all"
+								"index"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": ""
+								}
 							],
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "123"
-								},
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staff allowance budget",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/overhead-forecast/:client_id/staff-allowance-budget?type=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"overhead-forecast",
+								":client_id",
+								"staff-allowance-budget"
+							],
+							"query": [
 								{
 									"key": "type",
-									"value": "doc"
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "client_id",
+									"value": "2"
 								}
 							]
 						}
@@ -1792,8 +2207,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -1810,7 +2225,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": null
+									"value": "3fbf0eb7-8291-4815-9578-3b4b271cdd70"
 								}
 							]
 						}
@@ -1836,10 +2251,21 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"client_id\":1,\r\n    \"approved_by\":\"123\",\r\n    \"type\":\"doc\",\r\n    \"periodic_forecasts\":[\r\n        {\r\n            \"id\": \"d6fbc196-03a1-44a1-b494-8ccc81804cd6\",\r\n            \"client_id\": \"2\",\r\n            \"title\": \"Regular\",\r\n            \"yearly_budget\": 3000,\r\n            \"frequency\": 5\r\n        },\r\n        {\r\n            \"id\": \"dce8189b-df1b-4da4-9b58-a0b4806b4d8d\",\r\n            \"client_id\": \"2\",\r\n            \"title\": \"Windows\",\r\n            \"yearly_budget\": 4000,\r\n            \"frequency\": 6\r\n        },\r\n        {\r\n            \"id\": \"4a9181fa-75eb-444b-a3c4-ee1e50b6c238\",\r\n            \"client_id\": \"2\",\r\n            \"title\": \"Accomodation\",\r\n            \"yearly_budget\": 5000,\r\n            \"frequency\": 7\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"client_id\":2,\r\n    \"approved_by\":\"123\",\r\n    \"type\":\"doc\",\r\n    \"periodic_forecasts\":[\r\n        {\r\n            \"id\": \"d6fbc196-03a1-44a1-b494-8ccc81804cd6\",\r\n            \"title\": \"Regular\",\r\n            \"yearly_hour\": 3000,\r\n            \"frequency\": 5,\r\n            \"percent\": 10.33\r\n        },\r\n        {\r\n            \"id\": \"dce8189b-df1b-4da4-9b58-a0b4806b4d8d\",\r\n            \"title\": \"Windows\",\r\n            \"yearly_hour\": 4000,\r\n            \"frequency\": 6\r\n        },\r\n        {\r\n            \"id\": \"4a9181fa-75eb-444b-a3c4-ee1e50b6c238\",\r\n            \"title\": \"Accomodation\",\r\n            \"yearly_hour\": 4000,\r\n            \"frequency\": 7\r\n        },\r\n        {\r\n            \"title\": \"New Title\",\r\n            \"yearly_hour\": 5500,\r\n            \"frequency\": 7\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1881,6 +2307,76 @@
 								"key": "accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/periodic-forecast/:client_id/index?type=doc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"periodic-forecast",
+								":client_id",
+								"index"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "doc"
+								}
+							],
+							"variable": [
+								{
+									"key": "client_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all grouped by client id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1909,26 +2405,14 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/periodic-forecast/:client_id/:type/all",
+							"raw": "{{url}}/api/periodic-forecast/group-client-id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"periodic-forecast",
-								":client_id",
-								":type",
-								"all"
-							],
-							"variable": [
-								{
-									"key": "client_id",
-									"value": "1"
-								},
-								{
-									"key": "type",
-									"value": "doc"
-								}
+								"group-client-id"
 							]
 						}
 					},
@@ -1945,6 +2429,11 @@
 							{
 								"key": "accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -1986,7 +2475,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": null
+									"value": "d6fbc196-03a1-44a1-b494-8ccc81804cd6"
 								}
 							]
 						}
@@ -2001,6 +2490,11 @@
 							{
 								"key": "accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -2042,7 +2536,7 @@
 							"variable": [
 								{
 									"key": "uiud",
-									"value": null
+									"value": "d6fbc196-03a1-44a1-b494-8ccc81804cd6"
 								}
 							]
 						}
@@ -2141,14 +2635,14 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"client_id\":1,\r\n    \"approved_by\":\"123\",\r\n    \"type\":\"doc\",\r\n    \"other_forecasts\":[\r\n        {\r\n            \"id\": \"c918aec5-e871-4131-9464-5fd3bdfde73c\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"CSRasdwasdwa\",\r\n            \"yearly_budget\": 30000,\r\n            \"frequency\": 5\r\n        },\r\n        {\r\n            \"id\": \"d04cd4d4-59c6-4bd5-9da7-20b408b45cbe\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"QA\",\r\n            \"yearly_budget\": 40000,\r\n            \"frequency\": 6\r\n        },\r\n        {\r\n            \"id\": \"9aef20d7-dd7a-4895-b11f-6a99f250ef87\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"By Call\",\r\n            \"yearly_budget\": 50000,\r\n            \"frequency\": 7\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"client_id\":1,\r\n    \"approved_by\":\"123\",\r\n    \"type\" : \"doc\",\r\n    \"other_forecasts\":[\r\n        {\r\n            \"id\": \"c918aec5-e871-4131-9464-5fd3bdfde731\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"CSRasdwasdwa\",\r\n            \"yearly_budget\": 30000,\r\n            \"frequency\": 5\r\n        },\r\n        {\r\n            \"id\": \"d04cd4d4-59c6-4bd5-9da7-20b408b45cb2\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"QA\",\r\n            \"yearly_budget\": 40000,\r\n            \"frequency\": 6\r\n        },\r\n        {\r\n            \"id\": \"9aef20d7-dd7a-4895-b11f-6a99f250ef83\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"By Call\",\r\n            \"yearly_budget\": 50000,\r\n            \"frequency\": 7\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2259,8 +2753,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -2269,7 +2763,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/other-forecast/:client_id/:type/all",
+							"raw": "{{url}}/api/other-forecast/:client_id/index",
 							"host": [
 								"{{url}}"
 							],
@@ -2277,17 +2771,12 @@
 								"api",
 								"other-forecast",
 								":client_id",
-								":type",
-								"all"
+								"index"
 							],
 							"variable": [
 								{
 									"key": "client_id",
 									"value": "1"
-								},
-								{
-									"key": "type",
-									"value": "doc"
 								}
 							]
 						}
@@ -2318,8 +2807,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization_id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -2340,7 +2829,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": "c918aec5-e871-4131-9464-5fd3bdfde73c"
+									"value": "d04cd4d4-59c6-4bd5-9da7-20b408b45cb2"
 								}
 							]
 						}
@@ -2350,6 +2839,9 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -2358,8 +2850,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization_id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -2380,7 +2872,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": null
+									"value": "d04cd4d4-59c6-4bd5-9da7-20b408b45cb2"
 								}
 							]
 						}
@@ -2394,6 +2886,9 @@
 			"item": [
 				{
 					"name": "store/update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": true
+					},
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -2406,14 +2901,14 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123a",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"client_id\":1,\r\n    \"approved_by\":\"123\",\r\n    \"client_visits\":[\r\n        {\r\n            \"id\": \"28394dce-825d-4496-934f-4ab2aeb2dfff\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"CSR\",\r\n            \"yearly_budget\": 20000,\r\n            \"frequency\": 4\r\n        },\r\n        {\r\n            \"id\": \"a4481d33-5ba0-4d4b-9c72-f913c574fb77\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"QA\",\r\n            \"yearly_budget\": 30000,\r\n            \"frequency\": 5\r\n        },\r\n        {\r\n            \"id\": \"ed12b9fc-2a57-4be0-ad93-4f71b9a32221\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"By Call\",\r\n            \"yearly_budget\": 40000,\r\n            \"frequency\": 6\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"client_id\":1,\r\n    \"approved_by\":\"123\",\r\n    \"client_visits\":[\r\n        {\r\n            \"id\": \"28394dce-825d-4496-934f-4ab2aeb2dfff\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"CSR\",\r\n            \"yearly_visit\": 20000\r\n        },\r\n        {\r\n            \"id\": \"a4481d33-5ba0-4d4b-9c72-f913c574fb77\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"QA\",\r\n            \"yearly_visit\": 30000\r\n        },\r\n        {\r\n            \"id\": \"ed12b9fc-2a57-4be0-ad93-4f71b9a32221\",\r\n            \"client_id\": \"1\",\r\n            \"title\": \"By Call\",\r\n            \"yearly_visit\": 40000\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2517,8 +3012,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123a",
 								"type": "text"
 							}
 						],
@@ -2527,7 +3022,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/client-visit/:client_id/all",
+							"raw": "{{url}}/api/client-visit/:client_id/index",
 							"host": [
 								"{{url}}"
 							],
@@ -2535,12 +3030,12 @@
 								"api",
 								"client-visit",
 								":client_id",
-								"all"
+								"index"
 							],
 							"variable": [
 								{
 									"key": "client_id",
-									"value": "f9ceed96-edd1-4049-ae4e-40bde644cd5b"
+									"value": "1"
 								}
 							]
 						}
@@ -2571,8 +3066,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization_id",
+								"value": "123a",
 								"type": "text"
 							}
 						],
@@ -2593,7 +3088,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": "a4481d33-5ba0-4d4b-9c72-f913c574fb77"
+									"value": "28394dce-825d-4496-934f-4ab2aeb2dfff"
 								}
 							]
 						}
@@ -2633,7 +3128,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": null
+									"value": "28394dce-825d-4496-934f-4ab2aeb2dfff"
 								}
 							]
 						}
@@ -2665,8 +3160,8 @@
 										"type": "text"
 									},
 									{
-										"key": "oraganization_id",
-										"value": "",
+										"key": "organization-id",
+										"value": "123",
 										"type": "text"
 									}
 								],
@@ -2724,8 +3219,8 @@
 										"type": "text"
 									},
 									{
-										"key": "oraganization_id",
-										"value": "",
+										"key": "organization-id",
+										"value": "123",
 										"type": "text"
 									}
 								],
@@ -2746,7 +3241,7 @@
 									"variable": [
 										{
 											"key": "uuid",
-											"value": "8dad55f1-6a56-422e-95f6-c830dbe7b03d"
+											"value": "788cde6b-f388-4cb2-84b4-3b194533efac"
 										}
 									]
 								}
@@ -2774,8 +3269,8 @@
 										"type": "text"
 									},
 									{
-										"key": "oraganization_id",
-										"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+										"key": "organization-id",
+										"value": "123",
 										"type": "text"
 									}
 								],
@@ -2889,8 +3384,8 @@
 										"type": "text"
 									},
 									{
-										"key": "oraganization_id",
-										"value": "",
+										"key": "organization-id",
+										"value": "123",
 										"type": "text"
 									}
 								],
@@ -2911,7 +3406,7 @@
 									"variable": [
 										{
 											"key": "uuid",
-											"value": "d8aa24e7-3f9e-4820-840c-3d5c55d541d8"
+											"value": "1cd48afb-4d86-432c-9485-aa8c7cca74a3"
 										}
 									]
 								}
@@ -2931,8 +3426,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -2946,7 +3441,7 @@
 								},
 								{
 									"key": "title",
-									"value": "Expense",
+									"value": "Expense3",
 									"type": "text"
 								},
 								{
@@ -2980,8 +3475,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -2995,7 +3490,7 @@
 								},
 								{
 									"key": "title",
-									"value": "Income",
+									"value": "Expense",
 									"type": "text"
 								},
 								{
@@ -3023,7 +3518,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": null
+									"value": "764a0610-ddaa-45aa-ac36-fb26cb5ad5d6"
 								}
 							]
 						}
@@ -3036,6 +3531,9 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -3044,8 +3542,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -3088,8 +3586,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -3110,7 +3608,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": null
+									"value": "b53d1acd-1b07-4db3-8181-9fb45abad537"
 								}
 							]
 						}
@@ -3128,8 +3626,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -3150,7 +3648,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": null
+									"value": "b53d1acd-1b07-4db3-8181-9fb45abad537"
 								}
 							]
 						}
@@ -3183,14 +3681,14 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"client_ids\":[1,2,4]\r\n}",
+							"raw": "{\r\n  \"client_ids\": [\r\n    2\r\n  ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3198,7 +3696,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/homepage/:date/site-budget",
+							"raw": "{{url}}/api/homepage/:date/site-budget?months[]=december&paginate=0&limit=4&page=1",
 							"host": [
 								"{{url}}"
 							],
@@ -3208,10 +3706,83 @@
 								":date",
 								"site-budget"
 							],
+							"query": [
+								{
+									"key": "months[]",
+									"value": "january",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "february",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "march",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "april",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "may",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "june",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "july",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "august",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "september",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "october",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "november",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "december"
+								},
+								{
+									"key": "paginate",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "4"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							],
 							"variable": [
 								{
 									"key": "date",
-									"value": "2022-02-02"
+									"value": null
 								}
 							]
 						}
@@ -3242,8 +3813,8 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
@@ -3257,7 +3828,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/homepage/:date/:client_id/site-budget",
+							"raw": "{{url}}/api/homepage/:date/:client_id/site-budget?type=doc",
 							"host": [
 								"{{url}}"
 							],
@@ -3268,14 +3839,30 @@
 								":client_id",
 								"site-budget"
 							],
+							"query": [
+								{
+									"key": "months[]",
+									"value": "february",
+									"disabled": true
+								},
+								{
+									"key": "months[]",
+									"value": "march",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "doc"
+								}
+							],
 							"variable": [
 								{
 									"key": "date",
-									"value": "2022-02-02"
+									"value": "2022-08-06"
 								},
 								{
 									"key": "client_id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -3306,8 +3893,8 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
@@ -3321,7 +3908,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/homepage/:date/:client_id/:type/all",
+							"raw": "{{url}}/api/homepage/:date/:client_id/:type/all?months[]=january&months[]=february&months[]=march&months[]=april&months[]=may&months[]=june&months[]=july&months[]=august&months[]=september&months[]=october&months[]=november&months[]=december",
 							"host": [
 								"{{url}}"
 							],
@@ -3333,14 +3920,64 @@
 								":type",
 								"all"
 							],
+							"query": [
+								{
+									"key": "months[]",
+									"value": "january"
+								},
+								{
+									"key": "months[]",
+									"value": "february"
+								},
+								{
+									"key": "months[]",
+									"value": "march"
+								},
+								{
+									"key": "months[]",
+									"value": "april"
+								},
+								{
+									"key": "months[]",
+									"value": "may"
+								},
+								{
+									"key": "months[]",
+									"value": "june"
+								},
+								{
+									"key": "months[]",
+									"value": "july"
+								},
+								{
+									"key": "months[]",
+									"value": "august"
+								},
+								{
+									"key": "months[]",
+									"value": "september"
+								},
+								{
+									"key": "months[]",
+									"value": "october"
+								},
+								{
+									"key": "months[]",
+									"value": "november"
+								},
+								{
+									"key": "months[]",
+									"value": "december"
+								}
+							],
 							"variable": [
 								{
 									"key": "date",
-									"value": "2022-02-02"
+									"value": "2022-12-01"
 								},
 								{
 									"key": "client_id",
-									"value": "1"
+									"value": "2"
 								},
 								{
 									"key": "type",
@@ -3375,8 +4012,8 @@
 								"type": "text"
 							},
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "{{organization_id}}",
 								"type": "text"
 							}
 						],
@@ -3390,7 +4027,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/homepage/company/all",
+							"raw": "{{url}}/api/homepage/company/all?months[]=january&months[]=february&months[]=march&months[]=april&months[]=may&months[]=june&months[]=july&months[]=august&months[]=september&months[]=october&months[]=november&months[]=december&type=doc&date=2022/02/02",
 							"host": [
 								"{{url}}"
 							],
@@ -3399,6 +4036,64 @@
 								"homepage",
 								"company",
 								"all"
+							],
+							"query": [
+								{
+									"key": "months[]",
+									"value": "january"
+								},
+								{
+									"key": "months[]",
+									"value": "february"
+								},
+								{
+									"key": "months[]",
+									"value": "march"
+								},
+								{
+									"key": "months[]",
+									"value": "april"
+								},
+								{
+									"key": "months[]",
+									"value": "may"
+								},
+								{
+									"key": "months[]",
+									"value": "june"
+								},
+								{
+									"key": "months[]",
+									"value": "july"
+								},
+								{
+									"key": "months[]",
+									"value": "august"
+								},
+								{
+									"key": "months[]",
+									"value": "september"
+								},
+								{
+									"key": "months[]",
+									"value": "october"
+								},
+								{
+									"key": "months[]",
+									"value": "november"
+								},
+								{
+									"key": "months[]",
+									"value": "december"
+								},
+								{
+									"key": "type",
+									"value": "doc"
+								},
+								{
+									"key": "date",
+									"value": "2022/02/02"
+								}
 							]
 						}
 					},
@@ -3433,8 +4128,8 @@
 								"type": "text"
 							},
 							{
-								"key": "oraganization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "123",
 								"type": "text"
 							}
 						],
@@ -3501,6 +4196,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_id\" : \"abcd\",\r\n    \"approved_by\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/approved-by",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"approved-by"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -3516,8 +4244,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
 								"type": "text"
 							},
 							{
@@ -3571,11 +4299,16 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"client_id\":1,\r\n    \"approved_by\":\"123\",\r\n    \"type\":\"doc\",\r\n    \"income_forecasts\":[\r\n        {\r\n            \"id\": \"acdbb0d4-32a5-440d-bbf7-fcce534a954b\",\r\n            \"title\": \"Regulars\",\r\n            \"forecast\":2000\r\n        },\r\n        {\r\n            \"id\": \"8b898f25-a149-4da0-89bd-45a5843ed848\",\r\n            \"title\": \"Windows\",\r\n            \"forecast\":3000\r\n        },\r\n        {\r\n            \"id\": \"65d2dea8-b665-4b4b-a14a-c69e3b1498e2\",\r\n            \"title\": \"Accomodation\",\r\n            \"forecast\":4000\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"client_id\":1,\r\n    \"approved_by\":\"123\",\r\n    \"type\":\"doc\",\r\n    \"income_forecasts\":[\r\n        {\r\n            \"client_id\": \"1\",\r\n            \"title\": \"CSRasdwasdwa\",\r\n            \"yearly_budget\": 30000,\r\n            \"frequency\": 5\r\n        },\r\n        {\r\n            \"client_id\": \"1\",\r\n            \"title\": \"QA\",\r\n            \"yearly_budget\": 40000,\r\n            \"frequency\": 6\r\n        },\r\n        {\r\n            \"client_id\": \"1\",\r\n            \"title\": \"By Call\",\r\n            \"yearly_budget\": 50000,\r\n            \"frequency\": 7\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3604,8 +4337,8 @@
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "organization_id",
-								"value": "",
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
 								"type": "text"
 							},
 							{
@@ -3627,7 +4360,7 @@
 							"variable": [
 								{
 									"key": "uuid",
-									"value": "8b898f25-a149-4da0-89bd-45a5843ed848"
+									"value": "ff68a2e0-277d-4db2-8e58-6b5590527afc"
 								}
 							]
 						}
@@ -3637,64 +4370,2013 @@
 			]
 		},
 		{
-			"name": "jwt token test",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso",
-							"type": "string"
+			"name": "Site Budget Total",
+			"item": [
+				{
+					"name": "store or update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_id\": 2,\r\n    \"title\": \"Mark Up\",\r\n    \"data\": [\r\n        {\r\n            \"type\":\"Overhead\",\r\n            \"percent\": \"2\",\r\n            \"value\": 500\r\n        },\r\n        {\r\n            \"type\":\"Margin\",\r\n            \"percent\": \"5\",\r\n            \"value\": 50\r\n        },\r\n        {\r\n            \"type\":\"Sales Commision\",\r\n            \"percent\": \"5\",\r\n            \"value\": 50\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/site-budget-total",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"site-budget-total"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "organization_id",
-						"value": "{{organization_id}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "hello",
-							"value": "world",
-							"type": "text",
-							"disabled": true
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/site-budget-total/:client_id/index?title=Mark Up",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"site-budget-total",
+								":client_id",
+								"index"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Mark Up"
+								}
+							],
+							"variable": [
+								{
+									"key": "client_id",
+									"value": "2"
+								}
+							]
 						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/api/test",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"test"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Summary",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/summary/:client_id?type=doc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"summary",
+								":client_id"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "doc"
+								}
+							],
+							"variable": [
+								{
+									"key": "client_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "submitted_by",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/262812655_927085991579121_9152495969464832026_n.jpg"
+								},
+								{
+									"key": "title",
+									"value": "Title 1",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "asldjwkldjalk\nasdlkwjakljd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/report",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "title",
+									"value": "Title 2",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "submitted_by",
+									"value": "adw",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/report/:report_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report",
+								":report_id"
+							],
+							"variable": [
+								{
+									"key": "report_id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store/update detail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"approved_by\":\"12345\",\r\n    \"status\":\"rejected\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/report/:report_id/detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report",
+								":report_id",
+								"detail"
+							],
+							"variable": [
+								{
+									"key": "report_id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/report?status=&client_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "client_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/report/:report_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report",
+								":report_id"
+							],
+							"variable": [
+								{
+									"key": "report_id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/report/:report_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report",
+								":report_id"
+							],
+							"variable": [
+								{
+									"key": "report_id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Setting",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/setting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"setting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pensions\":500,\r\n    \"ni\":2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/setting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"setting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"settings\":[\r\n        {\r\n            \"key\":\"pensions\",\r\n            \"value\": 500\r\n        },\r\n        {\r\n            \"key\":\"ni\",\r\n            \"value\": 200\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/setting/:setting_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"setting",
+								":setting_id"
+							],
+							"variable": [
+								{
+									"key": "setting_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory Asset",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"assets\" : [\r\n        {\r\n            \"id\" : \"a145e179-c3c8-4739-9e20-00526f1d6da2\",\r\n            \"quantity\" : 1,\r\n            \"years_of_depreciation\" : 3,\r\n            \"service_charge_percent\" : 5,\r\n            \"title\" : \"Title One\",\r\n            \"unit_price\" : 100\r\n        },\r\n        {\r\n            \"id\" : \"8c2148e1-0554-4dea-b705-d10ce3294a5b\",\r\n            \"quantity\" : 2,\r\n            \"years_of_depreciation\" : 3,\r\n            \"service_charge_percent\" : 10,\r\n            \"title\" : \"Title Two\",\r\n            \"unit_price\" : 200\r\n        },\r\n        {\r\n            \"id\" : \"601d0409-bb5e-477a-9d15-ef5ae1d0d4d5\",\r\n            \"quantity\" : 3,\r\n            \"years_of_depreciation\" : 3,\r\n            \"service_charge_percent\" : 12.5,\r\n            \"title\" : \"Title Three\",\r\n            \"unit_price\" : 300\r\n        },\r\n        {\r\n            \"id\" : \"3622167a-3a20-4aa8-9686-6b02064e269e\",\r\n            \"quantity\" : 4,\r\n            \"years_of_depreciation\" : 3,\r\n            \"service_charge_percent\" : 15,\r\n            \"title\" : \"Title Four\",\r\n            \"unit_price\" : 400\r\n        }\r\n    ],\r\n    \"client_id\" : \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/inventory-asset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"inventory-asset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/inventory-asset?client_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"inventory-asset"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "c2d7e41c-d085-4ea3-94bd-dc179a3ab203",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/inventory-asset/:asset_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"inventory-asset",
+								":asset_id"
+							],
+							"variable": [
+								{
+									"key": "asset_id",
+									"value": "a145e179-c3c8-4739-9e20-00526f1d6da2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attachment",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Title 1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "alksjdwkljda\nsdjwkldajlksjdlksjdkalsjdwj\najskldjwlkajklsdjw",
+									"description": "nullable",
+									"type": "text"
+								},
+								{
+									"key": "attached_by",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "attachable_type",
+									"value": "periodic_forecast",
+									"type": "text"
+								},
+								{
+									"key": "attachable_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "nullable",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/262812655_927085991579121_9152495969464832026_n.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/attachment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"attachment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Title 1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "asdw",
+									"description": "nullable",
+									"type": "text"
+								},
+								{
+									"key": "attached_by",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "attachable_type",
+									"value": "overhead_forecast",
+									"type": "text"
+								},
+								{
+									"key": "attachable_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "nullable",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/299971883_413873870857645_4284371121797607266_n.png"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/attachment/:attachment_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"attachment",
+								":attachment_id"
+							],
+							"variable": [
+								{
+									"key": "attachment_id",
+									"value": ""
+								},
+								{
+									"key": "attachment_id",
+									"value": ""
+								},
+								{
+									"key": "attachment_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/attachment/:attachable_type/:attachable_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"attachment",
+								":attachable_type",
+								":attachable_id"
+							],
+							"variable": [
+								{
+									"key": "attachable_type",
+									"value": "overhead_forecast"
+								},
+								{
+									"key": "attachable_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Title 1",
+									"type": "text"
+								},
+								{
+									"key": "reported_by",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "reportable_type",
+									"value": "overhead_forecast",
+									"type": "text"
+								},
+								{
+									"key": "reportable_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/299971883_413873870857645_4284371121797607266_n.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/attachment/:attachment_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"attachment",
+								":attachment_id"
+							],
+							"variable": [
+								{
+									"key": "attachment_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "client side",
+			"item": [
+				{
+					"name": "get client list",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "fix client organization",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{client_side_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/fix-client-organization?organization_id=1abee06e-5730-4d53-b18c-a2c62ccbea22",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fix-client-organization"
+							],
+							"query": [
+								{
+									"key": "organization_id",
+									"value": "1abee06e-5730-4d53-b18c-a2c62ccbea22"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Folder",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/folder/:client_id/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":client_id",
+								"all"
+							],
+							"variable": [
+								{
+									"key": "client_id",
+									"value": "123a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/folder/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sub Sub Sub Document 1\",\r\n    \"client_id\": \"123a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/folder",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/313994879_657842602458422_6848560307507054958_n.jpg"
+								},
+								{
+									"key": "name",
+									"value": "asdw",
+									"description": "nullable",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id/store-files",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id",
+								"store-files"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/262812655_927085991579121_9152495969464832026_n.jpg"
+								},
+								{
+									"key": "name",
+									"value": "asdw",
+									"description": "nullable",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:file_id/file",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":file_id",
+								"file"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "140"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/262812655_927085991579121_9152495969464832026_n.jpg"
+								},
+								{
+									"key": "name",
+									"value": "asdw",
+									"description": "nullable",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Handover",
+			"item": [
+				{
+					"name": "Template",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{budget_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "organization-id",
+										"value": "{{organization_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/handover-template?status=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"handover-template"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "",
+											"description": "value: 0 or 1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{budget_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "organization-id",
+										"value": "{{organization_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/handover-template/:handover_template_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"handover-template",
+										":handover_template_id"
+									],
+									"variable": [
+										{
+											"key": "handover_template_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{budget_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "organization-id",
+										"value": "{{organization_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Title 3\",\r\n    \"tasks\" : [\"Task 1\", \"Task 2\", \"Task 3\"],\r\n    \"status\" : 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/handover-template",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"handover-template"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{budget_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "organization-id",
+										"value": "{{organization_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"title 3\",\r\n    \"tasks\" : [\"Task 1\", \"Task 2\"],\r\n    \"status\" : 1,\r\n    \"_method\" : \"PUT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/handover-template/:handover_template_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"handover-template",
+										":handover_template_id"
+									],
+									"variable": [
+										{
+											"key": "handover_template_id",
+											"value": "8"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{budget_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "organization-id",
+										"value": "{{organization_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/handover-template/:handover_template_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"handover-template",
+										":handover_template_id"
+									],
+									"variable": [
+										{
+											"key": "handover_template_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HandoverReport",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{budget_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "organization-id",
+										"value": "{{organization_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Title 1",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "alsdjalkjdalwkdj",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "owner_id",
+											"value": "awkdj3132",
+											"type": "text"
+										},
+										{
+											"key": "deadline",
+											"value": "2022/02/03",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "approved",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/handover-report/:handover_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"handover-report",
+										":handover_id"
+									],
+									"variable": [
+										{
+											"key": "handover_id",
+											"value": "29"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{budget_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "organization-id",
+										"value": "{{organization_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Title 1 edited",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "elajd ",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										},
+										{
+											"key": "owner_id",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "deadline",
+											"value": "2022/10/22",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/handover-report/:handover_report_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"handover-report",
+										":handover_report_id"
+									],
+									"variable": [
+										{
+											"key": "handover_report_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{budget_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "organization-id",
+										"value": "{{organization_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/handover-report/:handover_report_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"handover-report",
+										":handover_report_id"
+									],
+									"variable": [
+										{
+											"key": "handover_report_id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "client_id",
+									"value": "asd231",
+									"type": "text"
+								},
+								{
+									"key": "employee_id",
+									"value": "adw31",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "reports[0][title]",
+									"value": "Title 1",
+									"type": "text"
+								},
+								{
+									"key": "reports[0][description]",
+									"value": "alsdjalkjdalwkdj",
+									"type": "text"
+								},
+								{
+									"key": "reports[1][title]",
+									"value": "Title 1",
+									"type": "text"
+								},
+								{
+									"key": "reports[1][description]",
+									"value": "alsdjalkjdalwkdj",
+									"type": "text"
+								},
+								{
+									"key": "reports[0][file]",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/262812655_927085991579121_9152495969464832026_n.jpg"
+								},
+								{
+									"key": "reports[1][file]",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/memes/262812655_927085991579121_9152495969464832026_n.jpg"
+								},
+								{
+									"key": "reports[0][status]",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/handover",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"handover"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "client_id",
+									"value": "asd2312",
+									"type": "text"
+								},
+								{
+									"key": "employee_id",
+									"value": "adw312",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "in-progress",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/handover/:handover_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"handover",
+								":handover_id"
+							],
+							"variable": [
+								{
+									"key": "handover_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/handover?status=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"handover"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/handover/:handover_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"handover",
+								":handover_id"
+							],
+							"variable": [
+								{
+									"key": "handover_id",
+									"value": "29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/handover/:handover_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"handover",
+								":handover_id"
+							],
+							"variable": [
+								{
+									"key": "handover_id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDc3NjU0NDYsImlzcyI6ImF1dGgtcHJvdmlkZXIiLCJwYXlsb2FkIjp7Im5hbWUiOiJ1c2VyMyIsIm9yZ3MiOnsiYzJkN2U0MWMtZDA4NS00ZWEzLTk0YmQtZGMxNzlhM2FiMjAzIjp7ImVtcGxveWVlIjp7ImVtcGxveWVlX2Z1bGxfbmFtZSI6IiIsImVtcGxveWVlX2lkIjoiMTNiOTBhNzMtMGIwZi00ZmQzLWEwMDItNDg3ZWNlZjY5YjQ2Iiwicm9sZXMiOlsicm9sZS0xIl0sInNjb3BlcyI6WyJmbS5jbGllbnQuZGV0YWlsIiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uY2hlY2suY3JlYXRlIiwiZm0uY2hlY2suaW4iLCJmbS5jaGVjay5vdXQiLCJmbS5jaGVjay5saXN0IiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi1zaGlmdCIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5hc3NpZ24tdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNsaWVudC1lbXBsb3llZS1pZHMtYnktZW1wbG95ZWUtaWQiLCJmbS5jbGllbnQuc3RhdHVzLWNoYW5nZSIsImZtLmNsaWVudC5saXN0LWFjdGl2ZSIsImZtLmNsaWVudC5saXN0LWRlYWN0aXZlIiwiZm0udGFzay5saXN0LWJ5LWNsaWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZSIsImZtLmVtcGxveWVlLnVwZGF0ZS1zdGF0dXMiLCIiLCJmbS5jaGVjay5jcmVhdGUiLCJmbS5jaGVjay5pbiIsImZtLmNoZWNrLmxpc3QiLCJmbS5jaGVjay5vdXQiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLXNoaWZ0IiwiZm0uY2xpZW50LWVtcGxveWVlLmFzc2lnbi10YXJnZXQtdGFza3MiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmNyZWF0ZS1lbXBsb3llZS10cmFpbmluZyIsImZtLmNsaWVudC1lbXBsb3llZS5mbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLXRyYWluaW5ncyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWVtcGxveWVlLWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY2xpZW50LWlkcy1ieS1lbXBsb3llZS1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3VycyIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtdGFyZ2V0LXRhc2tzIiwiZm0uY2xpZW50LWVtcGxveWVlLmxpc3QiLCJmbS5jbGllbnQuYWRkLWF0dGFjaG1lbnQiLCJmbS5jbGllbnQuY3JlYXRlIiwiZm0uY2xpZW50LmNyZWF0ZS1jbGllbnQtbW9iaWxpemF0aW9uIiwiZm0uY2xpZW50LmRldGFpbCIsImZtLmNsaWVudC5nZXQtY2xpZW50LW1vYmlsaXphdGlvbiIsImZtLmNsaWVudC5saXN0IiwiZm0uY2xpZW50Lmxpc3QtYXR0YWNobWVudCIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5jbGllbnQudXBkYXRlLWNsaWVudC1tb2JpbGl6YXRpb24iLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRlbGV0ZS1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUuZGV0YWlsIiwiZm0uZW1wbG95ZWUuaG9saWRheS5jcmVhdGUiLCJmbS5lbXBsb3llZS5ob2xpZGF5Lmxpc3QiLCJmbS5lbXBsb3llZS5saXN0IiwiZm0uZW1wbG95ZWUubGlzdC1hdHRhY2htZW50IiwiZm0uZW1wbG95ZWUudXBkYXRlIiwiZm0uZW1wbG95ZWUudXBkYXRlLXN0YXR1cyIsImZtLmZpbGUuZGVsZXRlIiwiZm0uZmlsZS5kb3dubG9hZCIsImZtLmZpbGUudXBsb2FkIiwiZm0uaW52ZW50b3J5LmNhdGVnb3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5jYXRlZ29yeS5saXN0IiwiZm0uaW52ZW50b3J5LmNyZWF0ZSIsImZtLmludmVudG9yeS5saXN0IiwiZm0uam9iLXR5cGUuY3JlYXRlIiwiZm0uam9iLXR5cGUubGlzdCIsImZtLm1lZXRpbmcuY3JlYXRlIiwiZm0ubWVldGluZy5saXN0IiwiZm0ucm9sZS5jcmVhdGUiLCJmbS5yb2xlLnVwZGF0ZSIsImZtLnRhc2suY2hhbmdlLXRpbWVzaGVldC1jb3JyZWN0aW9uLXN0YXR1cyIsImZtLnRhc2suY2hlY2tpbiIsImZtLnRhc2suY2hlY2tvdXQiLCJmbS50YXNrLmNyZWF0ZSIsImZtLnRhc2subGlzdCIsImZtLnRhc2subGlzdC1ieS1jbGllbnQiLCJmbS50YXNrLmxpc3QtYnktZW1wbG95ZWUiLCJmbS50YXNrLmxpc3QtYnktbW9iaWxlLWVtcGxveWVlcyIsImZtLnRhc2subGlzdC1ieS12YXJpYXRpb24tY2xpZW50cyIsImZtLnRhc2sudXBkYXRlLXRhc2stYnktY2xpZW50IiwiZm0udGFzay51cGRhdGUtdGFzay1ieS1lbXBsb3llZSIsImZtLnRhc2sudXBkYXRlIiwiZm0udXNlci5hc3NvY2lhdGUiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWVtcGxveWVlLWlkcy1ieS1jbGllbnQtaWQiLCJmbS5jbGllbnQtZW1wbG95ZWUuZ2V0LWNvbnRyYWN0ZWQtaG91cnMtYnktY2xpZW50IiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWVtcGxveWVlIiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5yZWdpb24uY3JlYXRlIiwiZm0ucmVnaW9uLmxpc3QiLCJmbS5jbGllbnQuc2V0LWhlYWRvZmZpY2UiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc2hvdyIsImZtLmFjY291bnQuY2xvc2luZy1wZXJpb2Quc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuc3RvcmUiLCJmbS5hY2NvdW50LmZvcmVjYXN0LWhvdXIuaW5kZXgiLCJmbS5hY2NvdW50LmJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuaW52ZW50b3J5LWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5pbnZlbnRvcnktZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LmludmVudG9yeS1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5vdmVyaGVhZC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50Lm92ZXJoZWFkLWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQub3ZlcmhlYWQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQucGVyaW9kaWMtZm9yZWNhc3QuaW5kZXgiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LnN0b3JlIiwiZm0uYWNjb3VudC5wZXJpb2RpYy1mb3JlY2FzdC51cGRhdGUiLCJmbS5hY2NvdW50LnBlcmlvZGljLWZvcmVjYXN0LmRlc3Ryb3kiLCJmbS5hY2NvdW50Lm90aGVyLWZvcmVjYXN0LmluZGV4IiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5zdG9yZSIsImZtLmFjY291bnQub3RoZXItZm9yZWNhc3QudXBkYXRlIiwiZm0uYWNjb3VudC5vdGhlci1mb3JlY2FzdC5kZXN0cm95IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1mb3JlY2FzdC5pbmRleCIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3Quc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWZvcmVjYXN0LnVwZGF0ZSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZm9yZWNhc3QuZGVzdHJveSIsImZtLmFjY291bnQuc2l0ZS1idWRnZXQtZGV0YWlsLmluZGV4IiwiZm0uYWNjb3VudC5zaXRlLWJ1ZGdldC1kZXRhaWwuc3RvcmUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC51cGRhdGUiLCJmbS5hY2NvdW50LnNpdGUtYnVkZ2V0LWRldGFpbC5kZXN0cm95IiwiZm0uYXJlYS5jcmVhdGUiLCJmbS5hcmVhLmxpc3QiLCJmbS5jbGllbnQtZW1wbG95ZWUuYXNzaWduLWNvbnRyYWN0ZWQtaG91cnMiLCJmbS5jbGllbnQtZW1wbG95ZWUuY3JlYXRlIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzIiwiZm0uY2xpZW50LWVtcGxveWVlLmdldC1jb250cmFjdGVkLWhvdXJzLWJ5LWNsaWVudCIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtY29udHJhY3RlZC1ob3Vycy1ieS1lbXBsb3llZSIsImZtLmNsaWVudC1lbXBsb3llZS5nZXQtZW1wbG95ZWUtaWRzLWJ5LWNsaWVudC1pZCIsImZtLmNsaWVudC1lbXBsb3llZS5saXN0IiwiZm0uY2xpZW50LmNyZWF0ZSIsImZtLmNsaWVudC5kZXRhaWwiLCJmbS5jbGllbnQubGlzdCIsImZtLmNsaWVudC5zZXQtaGVhZG9mZmljZSIsImZtLmNsaWVudC51cGRhdGUiLCJmbS5kZXBhcnRtZW50LmNyZWF0ZSIsImZtLmRlcGFydG1lbnQubGlzdCIsImZtLmRlc2lnbmF0aW9uLmNyZWF0ZSIsImZtLmRlc2lnbmF0aW9uLmxpc3QiLCJmbS5lbXBsb3llZS5hZGQtYXR0YWNobWVudCIsImZtLmVtcGxveWVlLmNyZWF0ZSIsImZtLmVtcGxveWVlLmRldGFpbCIsImZtLmVtcGxveWVlLmxpc3QiLCJmbS5lbXBsb3llZS5saXN0LWF0dGFjaG1lbnQiLCJmbS5lbXBsb3llZS51cGRhdGUiLCJmbS5qb2ItdHlwZS5jcmVhdGUiLCJmbS5qb2ItdHlwZS5saXN0IiwiZm0ubWVldGluZy5jcmVhdGUiLCJmbS5tZWV0aW5nLnVwZGF0ZSIsImZtLnJlZ2lvbi5jcmVhdGUiLCJmbS5yZWdpb24ubGlzdCIsImZtLnRhc2suY3JlYXRlIiwiZm0udGFzay5saXN0IiwiZm0udGFzay51cGRhdGUiLCJmbS51c2VyLmFzc29jaWF0ZSJdfSwib3JnX25hbWUiOiJ5YmMifX0sInVzZXJfaWQiOiI3ODRmZDY5Yy00OGEzLTQ0NmMtODBlMC05YWMxYjU2OTI3ZGIiLCJ1c2VybmFtZSI6InVzZXIzIn19.E6VcOT6unxkJGrBwWsGxQ9BVBXhpamokrzmqTqidWmlcx8N8OccR4zwsu7-Ugrfy5BukKfHsMJGsLFGMvUa9iFwfqXCE_pKi2HkfKi26r22j9oUAgoL2IDvW8V9EjYAp4Ys-PoPnocf3oGhpwbrTq8YJdM4EJGGvJNV-JIM2FbL1h2I71YgOhl6s2jj6BE1RoBUpJTvvwv80YMjYsA5zwEHwlTrKraAUTzz68imAz8aGNSfzSApkGzxHs6HLe5xG4iombrrNz_Pj0KK-QOOfuO-VKMu1RTqDnIXd7Y18EG-iQY4hOtJJWJJmCjK-2pynPxwtanN9Ck4cyqkCrsldWmBUMphZjN_kkHDBOa8H0-bjHR7W-_TBXqycSvpwhAYlpUyyF6t3FNHqndmzwzmZknFlOfDIQ7-bfPZl2M6jDIPhNRw2CwEKEqZgJTKNBg-9HkklNFV24NFrpPQvhUSOw_ufHGuU29TOxwi2zOThujsDMhQSNcV8zTrDcGsdvCmaB57iFZWRBo5agxYQ5Qh8uu2uf67YKK85qBEdVUMDhnj4vpsCntIRa__fPcaQO4t06wiGNRMYLjv1624T7-uku5J9fkmdegQsnwynjj7dp_X3GzIYDwVtv-QT9sWAhuj3R5cXTuWz0siOR6IpZFaakYzIz6QXJuoDEw_N_XqbNso\n",
-				"type": "string"
-			}
-		]
-	},
 	"event": [
 		{
 			"listen": "prerequest",
