@@ -662,7 +662,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/forecast-hour/all/client/group-type?user_type=employee&user_id=&current_date=2022-06-28&type=",
+							"raw": "{{url}}/api/forecast-hour/all/client/group-type?user_type=client&user_id=&current_date=2022-06-28&type=&start_date=2022-02-02",
 							"host": [
 								"{{url}}"
 							],
@@ -676,7 +676,7 @@
 							"query": [
 								{
 									"key": "user_type",
-									"value": "employee"
+									"value": "client"
 								},
 								{
 									"key": "user_id",
@@ -692,8 +692,7 @@
 								},
 								{
 									"key": "start_date",
-									"value": "2022-02-02",
-									"disabled": true
+									"value": "2022-02-02"
 								}
 							]
 						}
@@ -3696,7 +3695,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/homepage/:date/site-budget?months[]=december&paginate=0&limit=4&page=1",
+							"raw": "{{url}}/api/homepage/:date/site-budget?months[]=january&months[]=february&months[]=march&months[]=april&months[]=may&months[]=june&months[]=july&months[]=august&months[]=september&months[]=october&months[]=november&months[]=december&paginate=0&limit=4&page=1",
 							"host": [
 								"{{url}}"
 							],
@@ -3782,7 +3781,7 @@
 							"variable": [
 								{
 									"key": "date",
-									"value": null
+									"value": "2022-09-28"
 								}
 							]
 						}

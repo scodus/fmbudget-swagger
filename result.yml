@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Phase One
-  description: Phase One
+  title: YBC - Fm budget
+  description: 'Base url: https://scodus.dev'
   version: '1.0'
   x-logo:
     url: https://github.com/joolfe/logoBanner.png
@@ -25,8 +25,6 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-security:
-  - bearerAuth: []
 tags:
   - name: Closing Period
   - name: Forecast Hours
@@ -40,6 +38,14 @@ tags:
   - name: Homepage
   - name: Approved By
   - name: Income
+  - name: Site Budget Total
+  - name: Summary
+  - name: Report
+  - name: Setting
+  - name: Inventory Asset
+  - name: Attachment
+  - name: client side
+  - name: Folder
 paths:
   /api/closing-period:
     post:
@@ -74,7 +80,7 @@ paths:
           schema:
             type: string
           example: Application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
@@ -90,18 +96,19 @@ paths:
         - Closing Period
       summary: show
       security:
-        - noauthAuth: []
+        - bearerAuth: []
       parameters:
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: 9c8d0bb6-d37d-4da6-9854-553a9edaa547
         - name: client_id
           in: path
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -119,6 +126,7 @@ paths:
           in: header
           schema:
             type: string
+          example: 9c8d0bb6-d37d-4da6-9854-553a9edaa547
       responses:
         '200':
           description: Successful response
@@ -145,6 +153,7 @@ paths:
           in: header
           schema:
             type: string
+          example: 9c8d0bb6-d37d-4da6-9854-553a9edaa547
       responses:
         '200':
           description: Successful response
@@ -300,7 +309,7 @@ paths:
           schema:
             type: string
           required: true
-          example: 666fa215-2f4b-4e77-a030-b598c6493c2c
+          example: 6dccb34c-13be-4932-b4b9-db6b1e2ea8d9
       responses:
         '200':
           description: Successful response
@@ -331,9 +340,9 @@ paths:
         - name: client_id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '2'
+          example: all
         - name: type
           in: path
           schema:
@@ -384,7 +393,7 @@ paths:
     post:
       tags:
         - Forecast Hours
-      summary: get total forecast hours of employee by day
+      summary: get total forecast hours of employee by date
       requestBody:
         content:
           application/json:
@@ -392,8 +401,7 @@ paths:
               type: object
               example:
                 employee_ids:
-                  - lasjdklwj
-                  - 1b2687bc-fe7a-43d6-b24e-40d67b02674e
+                  - '123'
       security:
         - bearerAuth: []
       parameters:
@@ -413,6 +421,81 @@ paths:
             type: string
           required: true
           example: '2022-07-12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/employee-forecast-hours/days:
+    post:
+      tags:
+        - Forecast Hours
+      summary: get total forecast hours of employee by days
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_ids: all
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{client_id}/{employee_id}/forecast-hours:
+    post:
+      tags:
+        - Forecast Hours
+      summary: get total forecast hours of employee by days Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                dates:
+                  - '2022-09-15'
+                  - '2022-09-17'
+                  - '2022-09-20'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+        - name: employee_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1234'
       responses:
         '200':
           description: Successful response
@@ -440,7 +523,7 @@ paths:
           in: query
           schema:
             type: string
-          example: employee
+          example: client
         - name: user_id
           in: query
           schema:
@@ -450,6 +533,15 @@ paths:
           schema:
             type: string
           example: '2022-06-28'
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2022-02-02'
       responses:
         '200':
           description: Successful response
@@ -518,12 +610,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: paginate
+          in: query
+          schema:
+            type: string
         - name: employee_id
           in: path
           schema:
             type: string
           required: true
-          example: 83dcd57b-7b9b-4347-bef9-191c07c7e430
+          example: all
       responses:
         '200':
           description: Successful response
@@ -554,9 +650,9 @@ paths:
         - name: employee_id
           in: path
           schema:
-            type: string
+            type: integer
           required: true
-          example: 83dcd57b-7b9b-4347-bef9-191c07c7e430
+          example: '123'
       responses:
         '200':
           description: Successful response
@@ -595,13 +691,21 @@ paths:
           in: query
           schema:
             type: string
-          description: nullable
+          description: 'nullable, values: active, inactive, any employee_id'
         - name: department
           in: query
           schema:
             type: string
           description: nullable
-          example: it
+        - name: client_id
+          in: query
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '0'
       responses:
         '200':
           description: Successful response
@@ -706,7 +810,7 @@ paths:
           schema:
             type: string
           required: true
-          example: efc17db6-dfaf-4ba8-bc3b-cfcc790f749d
+          example: 6dccb34c-13be-4932-b4b9-db6b1e2ea8d9
       responses:
         '200':
           description: Successful response
@@ -725,6 +829,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
         - name: department
           in: query
           schema:
@@ -732,9 +841,9 @@ paths:
         - name: client_id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '2'
+          example: all
         - name: date
           in: path
           schema:
@@ -746,7 +855,7 @@ paths:
           schema:
             type: string
           required: true
-          example: doc
+          example: all
       responses:
         '200':
           description: Successful response
@@ -765,10 +874,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
         - name: department
           in: query
           schema:
@@ -777,6 +887,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2022-02-10'
         - name: client_id
           in: path
           schema:
@@ -788,7 +903,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '2022-06-03'
+          example: '2022-02-06'
         - name: type
           in: path
           schema:
@@ -825,13 +940,17 @@ paths:
           in: query
           schema:
             type: string
-          example: lasjdklwj
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2022-02-10'
         - name: client_id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '2'
+          example: all
         - name: date
           in: path
           schema:
@@ -844,6 +963,96 @@ paths:
             type: string
           required: true
           example: all
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{date}/yearly/employee-combined:
+    get:
+      tags:
+        - Forecast Hours
+      summary: forecast hour yearly employee combined
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: client_id
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-01-03'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{date}/monthly/employee-combined:
+    get:
+      tags:
+        - Forecast Hours
+      summary: forecast hour monthly employee combined
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: client_id
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-10-03'
       responses:
         '200':
           description: Successful response
@@ -872,19 +1081,19 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
         - name: date
           in: path
           schema:
             type: string
           required: true
-          example: '2022-06-28'
+          example: '2022-02-08'
         - name: type
           in: path
           schema:
             type: string
           required: true
-          example: all
+          example: doc
       responses:
         '200':
           description: Successful response
@@ -903,7 +1112,7 @@ paths:
               example:
                 client_id: 2
                 approved_by: '123'
-                type: variant
+                type: variation
                 inventory_forecasts:
                   - id: 83afc4c9-4ab2-42ce-b9cd-c99906c29682
                     title: Store Budget
@@ -925,10 +1134,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
       responses:
         '200':
           description: Successful response
@@ -970,6 +1180,10 @@ paths:
           in: header
           schema:
             type: string
+        - name: ''
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -991,8 +1205,8 @@ paths:
         - name: organization_id
           in: header
           schema:
-            type: string
-          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+            type: integer
+          example: '123'
         - name: client_id
           in: path
           schema:
@@ -1004,7 +1218,7 @@ paths:
           schema:
             type: string
           required: true
-          example: variant
+          example: variation
       responses:
         '200':
           description: Successful response
@@ -1021,16 +1235,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: inventory_forecast_id
           in: path
           schema:
             type: string
           required: true
-          example: 45f23641-d52e-4dde-8b5b-eb330bae29d6
+          example: 725132f6-0121-4cc8-b57f-c179c9f2c1e0
       responses:
         '200':
           description: Successful response
@@ -1046,16 +1261,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: inventory_forecast_id
           in: path
           schema:
             type: string
           required: true
-          example: 45f23641-d52e-4dde-8b5b-eb330bae29d6
+          example: 725132f6-0121-4cc8-b57f-c179c9f2c1e0
       responses:
         '200':
           description: Successful response
@@ -1072,22 +1288,27 @@ paths:
             schema:
               type: object
               example:
-                client_id: '123'
+                client_id: abc
                 approved_by: '123'
-                type: doc
+                title: Holiday
                 overhead_forecasts:
                   - id: 11b07a8b-ffec-4acb-88db-bf1255f1038f
-                    forecast_hour_id: asdef
-                    title: Pension
+                    forecast_hour_id: 2d44bc7d-1a94-4e1b-88a5-86741dc1fad0
                     value: 100
+                    entitled_hour: 2
+                    entitled_day: 3.22
+                    frequency: 8
                   - id: 3fbf0eb7-8291-4815-9578-3b4b271cdd70
-                    forecast_hour_id: wadw
-                    title: Holiday
+                    forecast_hour_id: 2d44bc7d-1a94-4e1b-88a5-86741dc1fad0
                     value: 110
+                    entitled_hour: 2
+                    threshold: 22
+                    frequency: 8
                   - id: bd358752-9515-4713-8adc-76ee428c21cd
-                    forecast_hour_id: asdwa
-                    title: Sick Pay
+                    forecast_hour_id: 2d44bc7d-1a94-4e1b-88a5-86741dc1fad0
                     value: 120
+                    entitled_hour: 3
+                    frequency: 8
       security:
         - noauthAuth: []
       parameters:
@@ -1096,11 +1317,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
-          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+            type: integer
+          example: '123'
       responses:
         '200':
           description: Successful response
@@ -1163,15 +1384,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
+          example: 3fbf0eb7-8291-4815-9578-3b4b271cdd70
       responses:
         '200':
           description: Successful response
@@ -1184,21 +1407,23 @@ paths:
       security:
         - noauthAuth: []
       parameters:
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
+          example: 3fbf0eb7-8291-4815-9578-3b4b271cdd70
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/overhead-forecast/{client_id}/{type}/all:
+  /api/overhead-forecast/{client_id}/index:
     get:
       tags:
         - Overhead Forecast
@@ -1206,27 +1431,63 @@ paths:
       security:
         - noauthAuth: []
       parameters:
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: Accept
           in: header
           schema:
             type: string
           example: application/json
+        - name: title
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
         - name: client_id
           in: path
           schema:
             type: integer
           required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/overhead-forecast/{client_id}/staff-allowance-budget:
+    get:
+      tags:
+        - Overhead Forecast
+      summary: staff allowance budget
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
           example: '123'
-        - name: type
-          in: path
+        - name: Accept
+          in: header
           schema:
             type: string
+          example: application/json
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: client_id
+          in: path
+          schema:
+            type: integer
           required: true
-          example: doc
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -1243,33 +1504,45 @@ paths:
             schema:
               type: object
               example:
-                client_id: 1
+                client_id: 2
                 approved_by: '123'
                 type: doc
                 periodic_forecasts:
                   - id: d6fbc196-03a1-44a1-b494-8ccc81804cd6
-                    client_id: '2'
                     title: Regular
-                    yearly_budget: 3000
+                    yearly_hour: 3000
                     frequency: 5
+                    percent: 10.33
                   - id: dce8189b-df1b-4da4-9b58-a0b4806b4d8d
-                    client_id: '2'
                     title: Windows
-                    yearly_budget: 4000
+                    yearly_hour: 4000
                     frequency: 6
                   - id: 4a9181fa-75eb-444b-a3c4-ee1e50b6c238
-                    client_id: '2'
                     title: Accomodation
-                    yearly_budget: 5000
+                    yearly_hour: 4000
+                    frequency: 7
+                  - title: New Title
+                    yearly_hour: 5500
                     frequency: 7
       security:
         - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/periodic-forecast/{client_id}/{type}/all:
+  /api/periodic-forecast/{client_id}/index:
     get:
       tags:
         - Periodic Forecast
@@ -1282,18 +1555,45 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: doc
         - name: client_id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
-        - name: type
-          in: path
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/periodic-forecast/group-client-id:
+    get:
+      tags:
+        - Periodic Forecast
+      summary: get all grouped by client id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
           schema:
             type: string
-          required: true
-          example: doc
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
       responses:
         '200':
           description: Successful response
@@ -1310,11 +1610,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
+          example: d6fbc196-03a1-44a1-b494-8ccc81804cd6
       responses:
         '200':
           description: Successful response
@@ -1377,11 +1683,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
         - name: uiud
           in: path
           schema:
             type: string
           required: true
+          example: d6fbc196-03a1-44a1-b494-8ccc81804cd6
       responses:
         '200':
           description: Successful response
@@ -1402,17 +1714,17 @@ paths:
                 approved_by: '123'
                 type: doc
                 other_forecasts:
-                  - id: c918aec5-e871-4131-9464-5fd3bdfde73c
+                  - id: c918aec5-e871-4131-9464-5fd3bdfde731
                     client_id: '1'
                     title: CSRasdwasdwa
                     yearly_budget: 30000
                     frequency: 5
-                  - id: d04cd4d4-59c6-4bd5-9da7-20b408b45cbe
+                  - id: d04cd4d4-59c6-4bd5-9da7-20b408b45cb2
                     client_id: '1'
                     title: QA
                     yearly_budget: 40000
                     frequency: 6
-                  - id: 9aef20d7-dd7a-4895-b11f-6a99f250ef87
+                  - id: 9aef20d7-dd7a-4895-b11f-6a99f250ef83
                     client_id: '1'
                     title: By Call
                     yearly_budget: 50000
@@ -1425,10 +1737,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
       responses:
         '200':
           description: Successful response
@@ -1492,16 +1805,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization_id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
-          example: c918aec5-e871-4131-9464-5fd3bdfde73c
+          example: d04cd4d4-59c6-4bd5-9da7-20b408b45cb2
       responses:
         '200':
           description: Successful response
@@ -1511,27 +1825,31 @@ paths:
       tags:
         - Other Forecast
       summary: delete
+      security:
+        - noauthAuth: []
       parameters:
         - name: accept
           in: header
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization_id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
+          example: d04cd4d4-59c6-4bd5-9da7-20b408b45cb2
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/other-forecast/{client_id}/{type}/all:
+  /api/other-forecast/{client_id}/index:
     get:
       tags:
         - Other Forecast
@@ -1544,22 +1862,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: client_id
           in: path
           schema:
             type: integer
           required: true
           example: '1'
-        - name: type
-          in: path
-          schema:
-            type: string
-          required: true
-          example: doc
       responses:
         '200':
           description: Successful response
@@ -1582,18 +1895,15 @@ paths:
                   - id: 28394dce-825d-4496-934f-4ab2aeb2dfff
                     client_id: '1'
                     title: CSR
-                    yearly_budget: 20000
-                    frequency: 4
+                    yearly_visit: 20000
                   - id: a4481d33-5ba0-4d4b-9c72-f913c574fb77
                     client_id: '1'
                     title: QA
-                    yearly_budget: 30000
-                    frequency: 5
+                    yearly_visit: 30000
                   - id: ed12b9fc-2a57-4be0-ad93-4f71b9a32221
                     client_id: '1'
                     title: By Call
-                    yearly_budget: 40000
-                    frequency: 6
+                    yearly_visit: 40000
       security:
         - noauthAuth: []
       parameters:
@@ -1602,10 +1912,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: 123a
       responses:
         '200':
           description: Successful response
@@ -1669,16 +1980,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization_id
           in: header
           schema:
             type: string
+          example: 123a
         - name: uuid
           in: path
           schema:
             type: string
           required: true
-          example: a4481d33-5ba0-4d4b-9c72-f913c574fb77
+          example: 28394dce-825d-4496-934f-4ab2aeb2dfff
       responses:
         '200':
           description: Successful response
@@ -1703,12 +2015,13 @@ paths:
           schema:
             type: string
           required: true
+          example: 28394dce-825d-4496-934f-4ab2aeb2dfff
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/client-visit/{client_id}/all:
+  /api/client-visit/{client_id}/index:
     get:
       tags:
         - Client Visit
@@ -1721,16 +2034,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: 123a
         - name: client_id
           in: path
           schema:
-            type: string
+            type: integer
           required: true
-          example: f9ceed96-edd1-4049-ae4e-40bde644cd5b
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1749,10 +2063,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: client_id
           in: path
           schema:
@@ -1783,16 +2098,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
-          example: 8dad55f1-6a56-422e-95f6-c830dbe7b03d
+          example: 788cde6b-f388-4cb2-84b4-3b194533efac
       responses:
         '200':
           description: Successful response
@@ -1852,16 +2168,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
-          example: d8aa24e7-3f9e-4820-840c-3d5c55d541d8
+          example: 1cd48afb-4d86-432c-9485-aa8c7cca74a3
       responses:
         '200':
           description: Successful response
@@ -1908,11 +2225,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
-          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+            type: integer
+          example: '123'
       responses:
         '200':
           description: Successful response
@@ -1934,7 +2251,7 @@ paths:
                   example: '1'
                 title:
                   type: string
-                  example: Expense
+                  example: Expense3
                 type:
                   type: string
                   example: income
@@ -1944,10 +2261,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
       responses:
         '200':
           description: Successful response
@@ -1969,7 +2287,7 @@ paths:
                   example: '1'
                 title:
                   type: string
-                  example: Income
+                  example: Expense
                 type:
                   type: string
                   example: expense
@@ -1982,15 +2300,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
+          example: 764a0610-ddaa-45aa-ac36-fb26cb5ad5d6
       responses:
         '200':
           description: Successful response
@@ -2006,15 +2326,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
+          example: b53d1acd-1b07-4db3-8181-9fb45abad537
       responses:
         '200':
           description: Successful response
@@ -2030,15 +2352,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: uuid
           in: path
           schema:
             type: string
           required: true
+          example: b53d1acd-1b07-4db3-8181-9fb45abad537
       responses:
         '200':
           description: Successful response
@@ -2049,16 +2373,19 @@ paths:
       tags:
         - Site Budget Forecast
       summary: index
+      security:
+        - noauthAuth: []
       parameters:
         - name: Accept
           in: header
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
         - name: client_id
           in: path
           schema:
@@ -2082,9 +2409,7 @@ paths:
               type: object
               example:
                 client_ids:
-                  - 1
                   - 2
-                  - 4
       security:
         - bearerAuth: []
       parameters:
@@ -2093,16 +2418,37 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: '{{organization_id}}'
+        - name: months[]
+          in: query
+          schema:
+            type: string
+          example: january
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '4'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
         - name: date
           in: path
           schema:
             type: string
           required: true
-          example: '2022-02-02'
+          example: '2022-09-28'
       responses:
         '200':
           description: Successful response
@@ -2121,22 +2467,28 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: '{{organization_id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: doc
         - name: date
           in: path
           schema:
             type: string
           required: true
-          example: '2022-02-02'
+          example: '2022-08-06'
         - name: client_id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2155,16 +2507,22 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: '{{organization_id}}'
+        - name: months[]
+          in: query
+          schema:
+            type: string
+          example: january
         - name: date
           in: path
           schema:
             type: string
           required: true
-          example: '2022-02-02'
+          example: '2022-12-01'
         - name: client_id
           in: path
           schema:
@@ -2195,10 +2553,26 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: '{{organization_id}}'
+        - name: months[]
+          in: query
+          schema:
+            type: string
+          example: january
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: doc
+        - name: date
+          in: query
+          schema:
+            type: string
+          example: 2022/02/02
       responses:
         '200':
           description: Successful response
@@ -2217,10 +2591,34 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: oraganization_id
+        - name: organization-id
           in: header
           schema:
-            type: string
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Approved By
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: abcd
+                approved_by: '123'
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
       responses:
         '200':
           description: Successful response
@@ -2256,10 +2654,11 @@ paths:
       security:
         - noauthAuth: []
       parameters:
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
         - name: Accept
           in: header
           schema:
@@ -2297,15 +2696,18 @@ paths:
                 approved_by: '123'
                 type: doc
                 income_forecasts:
-                  - id: acdbb0d4-32a5-440d-bbf7-fcce534a954b
-                    title: Regulars
-                    forecast: 2000
-                  - id: 8b898f25-a149-4da0-89bd-45a5843ed848
-                    title: Windows
-                    forecast: 3000
-                  - id: 65d2dea8-b665-4b4b-a14a-c69e3b1498e2
-                    title: Accomodation
-                    forecast: 4000
+                  - client_id: '1'
+                    title: CSRasdwasdwa
+                    yearly_budget: 30000
+                    frequency: 5
+                  - client_id: '1'
+                    title: QA
+                    yearly_budget: 40000
+                    frequency: 6
+                  - client_id: '1'
+                    title: By Call
+                    yearly_budget: 50000
+                    frequency: 7
       security:
         - bearerAuth: []
       parameters:
@@ -2314,6 +2716,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
       responses:
         '200':
           description: Successful response
@@ -2327,10 +2734,11 @@ paths:
       security:
         - noauthAuth: []
       parameters:
-        - name: organization_id
+        - name: organization-id
           in: header
           schema:
             type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
         - name: Accept
           in: header
           schema:
@@ -2341,25 +2749,730 @@ paths:
           schema:
             type: string
           required: true
-          example: 8b898f25-a149-4da0-89bd-45a5843ed848
+          example: ff68a2e0-277d-4db2-8e58-6b5590527afc
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/test:
+  /api/site-budget-total:
+    post:
+      tags:
+        - Site Budget Total
+      summary: store or update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 2
+                title: Mark Up
+                data:
+                  - type: Overhead
+                    percent: '2'
+                    value: 500
+                  - type: Margin
+                    percent: '5'
+                    value: 50
+                  - type: Sales Commision
+                    percent: '5'
+                    value: 50
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget-total/{client_id}/index:
     get:
       tags:
-        - default
-      summary: jwt token test
+        - Site Budget Total
+      summary: index
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: title
+          in: query
+          schema:
+            type: string
+          example: Mark Up
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/summary/{client_id}:
+    get:
+      tags:
+        - Summary
+      summary: index
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: doc
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report:
+    post:
+      tags:
+        - Report
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                submitted_by:
+                  type: integer
+                  example: '123'
+                file:
+                  type: string
+                  format: binary
+                title:
+                  type: string
+                  example: Title 1
+                client_id:
+                  type: integer
+                  example: '1'
+                description:
+                  type: string
+                  example: |-
+                    asldjwkldjalk
+                    asdlkwjakljd
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Report
+      summary: index
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: client_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report/{report_id}:
+    post:
+      tags:
+        - Report
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                title:
+                  type: string
+                  example: Title 2
+                _method:
+                  type: string
+                  example: PUT
+                client_id:
+                  type: integer
+                  example: '1'
+                submitted_by:
+                  type: string
+                  example: adw
+                description:
+                  type: string
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Report
+      summary: delete
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Report
+      summary: show
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report/{report_id}/detail:
+    post:
+      tags:
+        - Report
+      summary: store/update detail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                approved_by: '12345'
+                status: rejected
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/setting:
+    get:
+      tags:
+        - Setting
+      summary: index
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Setting
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                pensions: 500
+                ni: 2000
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/setting/{setting_id}:
+    delete:
+      tags:
+        - Setting
+      summary: delete
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: setting_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-asset:
+    post:
+      tags:
+        - Inventory Asset
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                assets:
+                  - id: a145e179-c3c8-4739-9e20-00526f1d6da2
+                    quantity: 1
+                    years_of_depreciation: 3
+                    service_charge_percent: 5
+                    title: Title One
+                    unit_price: 100
+                  - id: 8c2148e1-0554-4dea-b705-d10ce3294a5b
+                    quantity: 2
+                    years_of_depreciation: 3
+                    service_charge_percent: 10
+                    title: Title Two
+                    unit_price: 200
+                  - id: 601d0409-bb5e-477a-9d15-ef5ae1d0d4d5
+                    quantity: 3
+                    years_of_depreciation: 3
+                    service_charge_percent: 12.5
+                    title: Title Three
+                    unit_price: 300
+                  - id: 3622167a-3a20-4aa8-9686-6b02064e269e
+                    quantity: 4
+                    years_of_depreciation: 3
+                    service_charge_percent: 15
+                    title: Title Four
+                    unit_price: 400
+                client_id: '1'
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Inventory Asset
+      summary: index
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: client_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-asset/{asset_id}:
+    delete:
+      tags:
+        - Inventory Asset
+      summary: delete
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: asset_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: a145e179-c3c8-4739-9e20-00526f1d6da2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attachment:
+    post:
+      tags:
+        - Attachment
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Title 1
+                description:
+                  type: string
+                  description: nullable
+                  example: |-
+                    alksjdwkljda
+                    sdjwkldajlksjdlksjdkalsjdwj
+                    ajskldjwlkajklsdjw
+                attached_by:
+                  type: integer
+                  example: '123'
+                attachable_type:
+                  type: string
+                  example: periodic_forecast
+                attachable_id:
+                  type: integer
+                  example: '1'
+                file:
+                  type: string
+                  description: nullable
+                  format: binary
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attachment/{attachment_id}:
+    post:
+      tags:
+        - Attachment
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Title 1
+                description:
+                  type: string
+                  description: nullable
+                  example: asdw
+                attached_by:
+                  type: integer
+                  example: '12345'
+                attachable_type:
+                  type: string
+                  example: overhead_forecast
+                attachable_id:
+                  type: integer
+                  example: '1'
+                file:
+                  type: string
+                  description: nullable
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: attachment_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Attachment
+      summary: delete
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: attachment_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attachment/{attachable_type}/{attachable_id}:
+    get:
+      tags:
+        - Attachment
+      summary: index
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: attachable_type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: overhead_forecast
+        - name: attachable_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/fix-client-organization:
+    get:
+      tags:
+        - client side
+      summary: fix client organization
       security:
         - bearerAuth: []
       parameters:
         - name: organization_id
+          in: query
+          schema:
+            type: string
+          example: 1abee06e-5730-4d53-b18c-a2c62ccbea22
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{client_id}/all:
+    get:
+      tags:
+        - Folder
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization-id
           in: header
           schema:
             type: string
           example: '{{organization_id}}'
+        - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 123a
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{id}:
+    get:
+      tags:
+        - Folder
+      summary: get single folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder:
+    post:
+      tags:
+        - Folder
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Sub Sub Sub Document 1
+                client_id: 123a
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/store-files:
+    post:
+      tags:
+        - Folder
+      summary: store file
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                  description: nullable
+                  example: asdw
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: folder_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
