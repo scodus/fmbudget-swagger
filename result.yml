@@ -1,0 +1,4466 @@
+openapi: 3.0.0
+info:
+  title: YBC - Fm budget
+  description: 'Base url: https://scodus.dev'
+  version: '1.0'
+  x-logo:
+    url: https://github.com/joolfe/logoBanner.png
+    backgroundColor: '#FFFFFF'
+    altText: logo
+  termsOfService: '#'
+  contact:
+    name: Scodus
+    url: https://scodus.com
+    email: scodusnp@gmail.com
+  license:
+    name: MIT
+    url: https://es.wikipedia.org/wiki/Licencia_MIT
+servers:
+  - url: http://{{url}}
+  - url: https://api.ybcsystems.com
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+tags:
+  - name: Closing Period
+  - name: Forecast Hours
+  - name: Inventory Forecast
+  - name: Overhead Forecast
+  - name: Periodic Forecast
+  - name: Other Forecast
+  - name: Client Visit
+  - name: Site Budget Forecast
+  - name: Site Budget Forecast > Details
+  - name: Homepage
+  - name: Approved By
+  - name: Income
+  - name: Site Budget Total
+  - name: Summary
+  - name: Report
+  - name: Setting
+  - name: Inventory Asset
+  - name: Attachment
+  - name: client side
+  - name: Folder
+  - name: Handover
+  - name: Handover > Template
+  - name: Handover > HandoverReport
+  - name: Report Template
+  - name: Report Title
+  - name: Client Date
+  - name: Task Correction
+paths:
+  /api/closing-period:
+    post:
+      tags:
+        - Closing Period
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: '3'
+                closing_periods:
+                  - dates:
+                      - '2022-02-03'
+                      - '2022-02-07'
+                      - '2022-03-22'
+                      - '2022-04-07'
+                    comment: Christmas holiday
+                  - dates:
+                      - '2022-05-02'
+                      - '2022-05-03'
+                      - '2022-05-04'
+                      - '2022-05-05'
+                    comment: Dashain Holiday
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: Application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: 9c8d0bb6-d37d-4da6-9854-553a9edaa547
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/closing-period/{client_id}:
+    get:
+      tags:
+        - Closing Period
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: 9c8d0bb6-d37d-4da6-9854-553a9edaa547
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/closing-period/:
+    get:
+      tags:
+        - Closing Period
+      summary: all
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+          example: 9c8d0bb6-d37d-4da6-9854-553a9edaa547
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/closing-period/filter-clients:
+    post:
+      tags:
+        - Closing Period
+      summary: filter clients
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_ids:
+                  - 2
+                  - 3
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+          example: 9c8d0bb6-d37d-4da6-9854-553a9edaa547
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour:
+    post:
+      tags:
+        - Forecast Hours
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 2
+                approved_by: '1234'
+                type: doc
+                forecast_hours:
+                  - hours:
+                      - SUNDAY: '10'
+                        day: SUNDAY
+                        hour: '200'
+                      - day: MONDAY
+                        hour: '10'
+                      - day: TUESDAY
+                        hour: '10'
+                      - day: WEDNESDAY
+                        hour: '10'
+                      - day: THURSDAY
+                        hour: '8'
+                      - day: FRIDAY
+                        hour: '9'
+                      - day: SATURDAY
+                        hour: '5'
+                    position: manager
+                    department: it
+                    shift: day
+                    contracted_weeks: 20
+                    weekdays_rate: 60
+                    saturday_rate: 80
+                    sunday_rate: 100
+                    overtime_rate: 30
+                    label: aaa
+                    employee_id: 123
+                  - id: 6dccb34c-13be-4932-b4b9-db6b1e2ea8d9
+                    employee_id: lasjdklwj
+                    hours:
+                      - day: SUNDAY
+                        hour: '10'
+                      - day: MONDAY
+                        hour: '10'
+                      - day: TUESDAY
+                        hour: '10'
+                      - day: WEDNESDAY
+                        hour: '10'
+                      - day: THURSDAY
+                        hour: '8'
+                      - day: FRIDAY
+                        hour: '9'
+                      - day: SATURDAY
+                        hour: '5'
+                    position: HR
+                    contracted_weeks: 10
+                    weekdays_rate: 50
+                    saturday_rate: 89
+                    sunday_rate: 100
+                    overtime_rate: 20
+                  - hours:
+                      - day: SUNDAY
+                        hour: '10'
+                      - day: MONDAY
+                        hour: '10'
+                      - day: TUESDAY
+                        hour: '10'
+                      - day: WEDNESDAY
+                        hour: '10'
+                      - day: THURSDAY
+                        hour: '8'
+                      - day: FRIDAY
+                        hour: '9'
+                      - day: SATURDAY
+                        hour: '5'
+                    contracted_weeks: 20
+                    weekdays_rate: 60
+                    saturday_rate: 80
+                    sunday_rate: 100
+                    overtime_rate: 30
+                    payment_type: hourly
+                    annual_rate: 1000.23
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{forecast_hour_id}/employee:
+    post:
+      tags:
+        - Forecast Hours
+      summary: change employee id
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  example: '1234'
+                _method:
+                  type: string
+                  example: put
+                start_date:
+                  type: string
+                  example: '2022-06-07'
+                end_date:
+                  type: string
+                is_head_office:
+                  type: integer
+                  example: '0'
+                allowed_client_ids[]:
+                  type: integer
+                  example: '3'
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: forecast_hour_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 6dccb34c-13be-4932-b4b9-db6b1e2ea8d9
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{client_id}/{type}:
+    get:
+      tags:
+        - Forecast Hours
+      summary: get
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: doc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/start-end-date:
+    patch:
+      tags:
+        - Forecast Hours
+      summary: start end date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employees:
+                  - client_id: 2
+                    employee_id: 123
+                    start_date: '2022-02-03'
+                    end_date: '2023-05-09'
+                  - client_id: 2
+                    employee_id: 1
+                    start_date: '2022-04-03'
+                    end_date: '2023-08-09'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/client-ids:
+    post:
+      tags:
+        - Forecast Hours
+      summary: get client ids from forecast hours
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                positions:
+                  - 94937b37-9c65-4897-a3cc-097bd1da967f
+                departments:
+                  - b8424ca1-d0e8-4b5d-9dec-7b33f12f0e39
+                client_ids:
+                  - 40935c8d-a82c-4eba-bdbc-b1dee05d0399
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{date}/employee-forecast-hours:
+    post:
+      tags:
+        - Forecast Hours
+      summary: get total forecast hours of employee by date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_ids:
+                  - '123'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-07-12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/employee-forecast-hours/days:
+    post:
+      tags:
+        - Forecast Hours
+      summary: get total forecast hours of employee by days
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_ids: all
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{client_id}/{employee_id}/forecast-hours:
+    post:
+      tags:
+        - Forecast Hours
+      summary: get total forecast hours of employee by days Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                dates:
+                  - '2022-09-15'
+                  - '2022-09-17'
+                  - '2022-09-20'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+        - name: employee_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1234'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/all/client/group-type:
+    get:
+      tags:
+        - Forecast Hours
+      summary: all forecast hour data for all client for every group type
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: user_type
+          in: query
+          schema:
+            type: string
+          example: employee
+        - name: user_id
+          in: query
+          schema:
+            type: string
+        - name: current_date
+          in: query
+          schema:
+            type: string
+          example: '2022-06-28'
+        - name: type
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{forecast_hour_id}/log:
+    get:
+      tags:
+        - Forecast Hours
+      summary: log
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+          description: >-
+            This field is optional! If you send this field, it will only return
+            logs of this specific employee!
+          example: lasjdklwj
+        - name: forecast_hour_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 6dccb34c-13be-4932-b4b9-db6b1e2ea8d9
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{employee_id}:
+    get:
+      tags:
+        - Forecast Hours
+      summary: get forecast hours by employee_id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: client_id
+          in: query
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: c3408e53-d3fa-4425-bc89-40a09005656d
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{employee_id}/hours-day:
+    get:
+      tags:
+        - Forecast Hours
+      summary: get all forecast hours by day for employee
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: c3408e53-d3fa-4425-bc89-40a09005656d
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/all:
+    get:
+      tags:
+        - Forecast Hours
+      summary: get all forecast hours
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: nullable
+          example: doc
+        - name: limit
+          in: query
+          schema:
+            type: string
+          description: nullable
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+          description: 'nullable, values: active, inactive, any employee_id'
+        - name: department
+          in: query
+          schema:
+            type: string
+          description: nullable
+        - name: client_id
+          in: query
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '0'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/all/client-ids:
+    get:
+      tags:
+        - Forecast Hours
+      summary: get all forecast hours by client_ids
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/end-date:
+    get:
+      tags:
+        - Forecast Hours
+      summary: get all forecast hours with end date
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: this field is nullable
+        - name: limit
+          in: query
+          schema:
+            type: string
+          description: this field is nullable
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{forecast_hour_id}:
+    delete:
+      tags:
+        - Forecast Hours
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: forecast_hour_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 69fbc7d4-d54b-4240-be47-2c8aef3ee4f9
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{client_id}/{date}/{type}/daily:
+    get:
+      tags:
+        - Forecast Hours
+      summary: forecast hour daily
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-06-03'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{client_id}/{date}/{type}/monthly:
+    get:
+      tags:
+        - Forecast Hours
+      summary: forecast hour monthly
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2022-02-10'
+        - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-02-06'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{client_id}/{date}/{type}/yearly:
+    get:
+      tags:
+        - Forecast Hours
+      summary: forecast hour yearly
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2022-02-10'
+        - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-06-03'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: all
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{date}/yearly/employee-combined:
+    get:
+      tags:
+        - Forecast Hours
+      summary: forecast hour yearly employee combined
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: client_id
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-01-03'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forecast-hour/{date}/monthly/employee-combined:
+    get:
+      tags:
+        - Forecast Hours
+      summary: forecast hour monthly employee combined
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: client_id
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: department
+          in: query
+          schema:
+            type: string
+        - name: employee_id
+          in: query
+          schema:
+            type: string
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-10-03'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/budget-forecast/{client_id}/{date}/{type}:
+    get:
+      tags:
+        - Forecast Hours
+      summary: budget-forecast
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-02-08'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: doc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-forecast:
+    post:
+      tags:
+        - Inventory Forecast
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 2
+                approved_by: '123'
+                type: variation
+                inventory_forecasts:
+                  - id: 83afc4c9-4ab2-42ce-b9cd-c99906c29682
+                    title: Store Budget
+                    yearly_budget: 30000
+                    frequency: 30
+                    percent: 0
+                  - id: 725132f6-0121-4cc8-b57f-c179c9f2c1e0
+                    title: Machinery Maintainance
+                    yearly_budget: 2000
+                    frequency: 20
+                  - id: c3d53773-5eae-4d28-b68f-6f88b9ed8ffc
+                    title: Consumable
+                    yearly_budget: 2000
+                    frequency: 10
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-forecast/45f23641-d52e-4dde-8b5b-eb330bae29d6:
+    post:
+      tags:
+        - Inventory Forecast
+      summary: ignore this api (old update api)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: others
+                yearly_budget:
+                  type: integer
+                  example: '123422'
+                frequency:
+                  type: integer
+                  example: '10'
+                _method:
+                  type: string
+                  example: PUT
+                client_id:
+                  type: integer
+                  example: '1'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+        - name: ''
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-forecast/{client_id}/{type}/all:
+    get:
+      tags:
+        - Inventory Forecast
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: variation
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-forecast/{inventory_forecast_id}:
+    get:
+      tags:
+        - Inventory Forecast
+      summary: show
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: inventory_forecast_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 725132f6-0121-4cc8-b57f-c179c9f2c1e0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Inventory Forecast
+      summary: delete
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: inventory_forecast_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 725132f6-0121-4cc8-b57f-c179c9f2c1e0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/overhead-forecast:
+    post:
+      tags:
+        - Overhead Forecast
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: abc
+                approved_by: '123'
+                title: Holiday
+                overhead_forecasts:
+                  - id: 11b07a8b-ffec-4acb-88db-bf1255f1038f
+                    forecast_hour_id: 2d44bc7d-1a94-4e1b-88a5-86741dc1fad0
+                    value: 100
+                    entitled_hour: 2
+                    entitled_day: 3.22
+                    frequency: 8
+                  - id: 3fbf0eb7-8291-4815-9578-3b4b271cdd70
+                    forecast_hour_id: 2d44bc7d-1a94-4e1b-88a5-86741dc1fad0
+                    value: 110
+                    entitled_hour: 2
+                    threshold: 22
+                    frequency: 8
+                  - id: bd358752-9515-4713-8adc-76ee428c21cd
+                    forecast_hour_id: 2d44bc7d-1a94-4e1b-88a5-86741dc1fad0
+                    value: 120
+                    entitled_hour: 3
+                    frequency: 8
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/overhead-forecast/{uuid}:
+    post:
+      tags:
+        - Overhead Forecast
+      summary: ignore this api (old update api)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                forecast_hour_id:
+                  type: string
+                  example: asdef
+                key:
+                  type: string
+                  example: holiday
+                value:
+                  type: integer
+                  example: '90'
+                _method:
+                  type: string
+                  example: put
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 71fcea70-e735-44da-857d-eddd7185ebf8
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Overhead Forecast
+      summary: delete
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 3fbf0eb7-8291-4815-9578-3b4b271cdd70
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Overhead Forecast
+      summary: show
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 3fbf0eb7-8291-4815-9578-3b4b271cdd70
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/overhead-forecast/{client_id}/index:
+    get:
+      tags:
+        - Overhead Forecast
+      summary: index
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: title
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/overhead-forecast/{client_id}/staff-allowance-budget:
+    get:
+      tags:
+        - Overhead Forecast
+      summary: staff allowance budget
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/periodic-forecast:
+    post:
+      tags:
+        - Periodic Forecast
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 2
+                approved_by: '123'
+                type: doc
+                periodic_forecasts:
+                  - id: d6fbc196-03a1-44a1-b494-8ccc81804cd6
+                    title: Regular
+                    yearly_hour: 3000
+                    yearly_budget: 15000
+                    frequency: 5
+                    percent: 10.33
+                  - id: dce8189b-df1b-4da4-9b58-a0b4806b4d8d
+                    title: Windows
+                    yearly_hour: 4000
+                    frequency: 6
+                  - id: 4a9181fa-75eb-444b-a3c4-ee1e50b6c238
+                    title: Accomodation
+                    yearly_hour: 4000
+                    frequency: 7
+                  - title: New Title
+                    yearly_hour: 5500
+                    frequency: 7
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/periodic-forecast/{client_id}/index:
+    get:
+      tags:
+        - Periodic Forecast
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: doc
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/periodic-forecast/group-client-id:
+    get:
+      tags:
+        - Periodic Forecast
+      summary: get all grouped by client id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/periodic-forecast/{uuid}:
+    get:
+      tags:
+        - Periodic Forecast
+      summary: show
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: d6fbc196-03a1-44a1-b494-8ccc81804cd6
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Periodic Forecast
+      summary: ignore this api (old update api)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  example: asdd
+                title:
+                  type: string
+                  example: regular
+                yearly_budget:
+                  type: integer
+                  example: '2000'
+                frequency:
+                  type: integer
+                  example: '5'
+                _method:
+                  type: string
+                  example: put
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 20193e7c-02f1-47eb-8365-a38165fbb6dc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/periodic-forecast/{uiud}:
+    delete:
+      tags:
+        - Periodic Forecast
+      summary: destroy
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uiud
+          in: path
+          schema:
+            type: string
+          required: true
+          example: d6fbc196-03a1-44a1-b494-8ccc81804cd6
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/other-forecast/:
+    post:
+      tags:
+        - Other Forecast
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 1
+                approved_by: '123'
+                type: doc
+                other_forecasts:
+                  - id: c918aec5-e871-4131-9464-5fd3bdfde731
+                    client_id: '1'
+                    title: CSRasdwasdwa
+                    yearly_budget: 30000
+                    frequency: 5
+                  - id: d04cd4d4-59c6-4bd5-9da7-20b408b45cb2
+                    client_id: '1'
+                    title: QA
+                    yearly_budget: 40000
+                    frequency: 6
+                  - id: 9aef20d7-dd7a-4895-b11f-6a99f250ef83
+                    client_id: '1'
+                    title: By Call
+                    yearly_budget: 50000
+                    frequency: 7
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/other-forecast/{uuid}:
+    post:
+      tags:
+        - Other Forecast
+      summary: ignore this api (old update api)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  example: asdd
+                title:
+                  type: string
+                  example: csr
+                yearly_budget:
+                  type: integer
+                  example: '20000'
+                frequency:
+                  type: integer
+                  example: '5'
+                _method:
+                  type: string
+                  example: put
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: oraganization_id
+          in: header
+          schema:
+            type: string
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Other Forecast
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: d04cd4d4-59c6-4bd5-9da7-20b408b45cb2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Other Forecast
+      summary: delete
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: d04cd4d4-59c6-4bd5-9da7-20b408b45cb2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/other-forecast/{client_id}/index:
+    get:
+      tags:
+        - Other Forecast
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/client-visit/:
+    post:
+      tags:
+        - Client Visit
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 1
+                approved_by: '123'
+                client_visits:
+                  - id: 28394dce-825d-4496-934f-4ab2aeb2dfff
+                    client_id: '1'
+                    title: CSR
+                    yearly_visit: 20000
+                  - id: a4481d33-5ba0-4d4b-9c72-f913c574fb77
+                    client_id: '1'
+                    title: QA
+                    yearly_visit: 30000
+                  - id: ed12b9fc-2a57-4be0-ad93-4f71b9a32221
+                    client_id: '1'
+                    title: By Call
+                    yearly_visit: 40000
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: 123a
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/client-visit/{uuid}:
+    post:
+      tags:
+        - Client Visit
+      summary: ignore this api (old update api)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  example: asdd
+                title:
+                  type: string
+                  example: csr
+                yearly_budget:
+                  type: integer
+                  example: '20000'
+                frequency:
+                  type: integer
+                  example: '5'
+                _method:
+                  type: string
+                  example: put
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: oraganization_id
+          in: header
+          schema:
+            type: string
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Client Visit
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization_id
+          in: header
+          schema:
+            type: string
+          example: 123a
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 28394dce-825d-4496-934f-4ab2aeb2dfff
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Client Visit
+      summary: delete
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: oraganization_id
+          in: header
+          schema:
+            type: string
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 28394dce-825d-4496-934f-4ab2aeb2dfff
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/client-visit/{client_id}/index:
+    get:
+      tags:
+        - Client Visit
+      summary: index
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: 123a
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget-detail/{client_id}/{type}/all:
+    get:
+      tags:
+        - Site Budget Forecast > Details
+      summary: index
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: doc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget-detail/{uuid}:
+    get:
+      tags:
+        - Site Budget Forecast > Details
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 788cde6b-f388-4cb2-84b4-3b194533efac
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Site Budget Forecast > Details
+      summary: ignore this api (old update api)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: doc
+                forecast:
+                  type: integer
+                  example: '123456'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: oraganization_id
+          in: header
+          schema:
+            type: string
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 32e08cf5-d0f0-4636-b031-ebc8cd70b9d4
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Site Budget Forecast > Details
+      summary: destroy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 1cd48afb-4d86-432c-9485-aa8c7cca74a3
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget-detail/:
+    post:
+      tags:
+        - Site Budget Forecast > Details
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 1
+                approved_by: '123'
+                type: doc
+                site_budget_details:
+                  - id: d7e5878a-a8a9-4b00-a83b-86428548b4f6
+                    title: pdfs
+                    forecast: 1234
+                    client_id: '1'
+                    created_at: '2022-04-03T06:48:10.000000Z'
+                    updated_at: '2022-04-03T06:48:10.000000Z'
+                  - id: 788cde6b-f388-4cb2-84b4-3b194533efac
+                    title: pdfs
+                    forecast: 12345
+                    client_id: '1'
+                    created_at: '2022-04-03T06:48:10.000000Z'
+                    updated_at: '2022-04-03T06:48:10.000000Z'
+                  - id: 1cd48afb-4d86-432c-9485-aa8c7cca74a3
+                    title: pdfs
+                    forecast: 123456
+                    client_id: '1'
+                    created_at: '2022-04-03T06:48:10.000000Z'
+                    updated_at: '2022-04-03T06:48:10.000000Z'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget:
+    post:
+      tags:
+        - Site Budget Forecast
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                  example: '1'
+                title:
+                  type: string
+                  example: Expense3
+                type:
+                  type: string
+                  example: income
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget/{uuid}:
+    post:
+      tags:
+        - Site Budget Forecast
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                  example: '1'
+                title:
+                  type: string
+                  example: Expense
+                type:
+                  type: string
+                  example: expense
+                _method:
+                  type: string
+                  example: PUT
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 764a0610-ddaa-45aa-ac36-fb26cb5ad5d6
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Site Budget Forecast
+      summary: show
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: b53d1acd-1b07-4db3-8181-9fb45abad537
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Site Budget Forecast
+      summary: delete
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: b53d1acd-1b07-4db3-8181-9fb45abad537
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget/{client_id}/all:
+    get:
+      tags:
+        - Site Budget Forecast
+      summary: index
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/homepage/{date}/site-budget:
+    post:
+      tags:
+        - Homepage
+      summary: get site-budget for multiple clients
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_ids:
+                  - 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: months[]
+          in: query
+          schema:
+            type: string
+          example: december
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '4'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/homepage/{date}/{client_id}/site-budget:
+    get:
+      tags:
+        - Homepage
+      summary: get site-budget for single client
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: doc
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-08-06'
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/homepage/{date}/{client_id}/{type}/all:
+    get:
+      tags:
+        - Homepage
+      summary: get all client data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: months[]
+          in: query
+          schema:
+            type: string
+          example: january
+        - name: date
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '2022-12-01'
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: doc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/homepage/company/all:
+    get:
+      tags:
+        - Homepage
+      summary: get all company data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: months[]
+          in: query
+          schema:
+            type: string
+          example: january
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: doc
+        - name: date
+          in: query
+          schema:
+            type: string
+          example: 2022/02/02
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/approved-by:
+    get:
+      tags:
+        - Approved By
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Approved By
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: abcd
+                approved_by: '123'
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/approved-by/1:
+    get:
+      tags:
+        - Approved By
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: oraganization_id
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/income-forecast/{client_id}/{type}/all:
+    get:
+      tags:
+        - Income
+      summary: index
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: doc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/income-forecast:
+    post:
+      tags:
+        - Income
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 1
+                approved_by: '123'
+                type: doc
+                income_forecasts:
+                  - client_id: '1'
+                    title: CSRasdwasdwa
+                    yearly_budget: 30000
+                    frequency: 5
+                  - client_id: '1'
+                    title: QA
+                    yearly_budget: 40000
+                    frequency: 6
+                  - client_id: '1'
+                    title: By Call
+                    yearly_budget: 50000
+                    frequency: 7
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/income-forecast/{uuid}:
+    delete:
+      tags:
+        - Income
+      summary: delete
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: uuid
+          in: path
+          schema:
+            type: string
+          required: true
+          example: ff68a2e0-277d-4db2-8e58-6b5590527afc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget-total:
+    post:
+      tags:
+        - Site Budget Total
+      summary: store or update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 2
+                title: Total Square Metres
+                data:
+                  - type: Supervision Hrs.
+                    percent: '2'
+                    value: 500
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-budget-total/{client_id}/index:
+    get:
+      tags:
+        - Site Budget Total
+      summary: index
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: title
+          in: query
+          schema:
+            type: string
+          example: Total Square Metres
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/summary/{client_id}:
+    get:
+      tags:
+        - Summary
+      summary: index
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: doc
+        - name: client_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report:
+    post:
+      tags:
+        - Report
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                submitted_by:
+                  type: integer
+                  example: '123'
+                file:
+                  type: string
+                  format: binary
+                title:
+                  type: string
+                  example: Title 1
+                client_id:
+                  type: integer
+                  example: '1'
+                description:
+                  type: string
+                  example: |-
+                    asldjwkldjalk
+                    asdlkwjakljd
+                report_title_id:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Report
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: client_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report/{report_id}:
+    post:
+      tags:
+        - Report
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                title:
+                  type: string
+                  example: Title 2
+                _method:
+                  type: string
+                  example: PUT
+                client_id:
+                  type: integer
+                  example: '1'
+                submitted_by:
+                  type: string
+                  example: adw
+                description:
+                  type: string
+                report_title_id:
+                  type: string
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '146'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Report
+      summary: delete
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '146'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Report
+      summary: show
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '9'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report/{report_id}/detail:
+    post:
+      tags:
+        - Report
+      summary: store/update detail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                approved_by: '12345'
+                status: rejected
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/setting:
+    get:
+      tags:
+        - Setting
+      summary: index
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Setting
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                pensions: 500
+                ni: 2000
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/setting/{setting_id}:
+    delete:
+      tags:
+        - Setting
+      summary: delete
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: integer
+          example: '123'
+        - name: setting_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-asset:
+    post:
+      tags:
+        - Inventory Asset
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                assets:
+                  - id: a145e179-c3c8-4739-9e20-00526f1d6da2
+                    quantity: 1
+                    years_of_depreciation: 3
+                    service_charge_percent: 5
+                    title: Title One
+                    unit_price: 100
+                  - id: 8c2148e1-0554-4dea-b705-d10ce3294a5b
+                    quantity: 2
+                    years_of_depreciation: 3
+                    service_charge_percent: 10
+                    title: Title Two
+                    unit_price: 200
+                  - id: 601d0409-bb5e-477a-9d15-ef5ae1d0d4d5
+                    quantity: 3
+                    years_of_depreciation: 3
+                    service_charge_percent: 12.5
+                    title: Title Three
+                    unit_price: 300
+                  - id: 3622167a-3a20-4aa8-9686-6b02064e269e
+                    quantity: 4
+                    years_of_depreciation: 3
+                    service_charge_percent: 15
+                    title: Title Four
+                    unit_price: 400
+                client_id: '1'
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Inventory Asset
+      summary: index
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: client_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-asset/{asset_id}:
+    delete:
+      tags:
+        - Inventory Asset
+      summary: delete
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: c2d7e41c-d085-4ea3-94bd-dc179a3ab203
+        - name: asset_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: a145e179-c3c8-4739-9e20-00526f1d6da2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attachment:
+    post:
+      tags:
+        - Attachment
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Title 1
+                description:
+                  type: string
+                  description: nullable
+                  example: |-
+                    alksjdwkljda
+                    sdjwkldajlksjdlksjdkalsjdwj
+                    ajskldjwlkajklsdjw
+                attached_by:
+                  type: integer
+                  example: '123'
+                attachable_type:
+                  type: string
+                  example: periodic_forecast
+                attachable_id:
+                  type: integer
+                  example: '1'
+                file:
+                  type: string
+                  description: nullable
+                  format: binary
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attachment/{attachment_id}:
+    post:
+      tags:
+        - Attachment
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Title 1
+                description:
+                  type: string
+                  description: nullable
+                  example: asdw
+                attached_by:
+                  type: integer
+                  example: '12345'
+                attachable_type:
+                  type: string
+                  example: overhead_forecast
+                attachable_id:
+                  type: integer
+                  example: '1'
+                file:
+                  type: string
+                  description: nullable
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: attachment_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Attachment
+      summary: delete
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: attachment_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/attachment/{attachable_type}/{attachable_id}:
+    get:
+      tags:
+        - Attachment
+      summary: index
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: attachable_type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: overhead_forecast
+        - name: attachable_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/fix-client-organization:
+    get:
+      tags:
+        - client side
+      summary: fix client organization
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization_id
+          in: query
+          schema:
+            type: string
+          example: 1abee06e-5730-4d53-b18c-a2c62ccbea22
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{client_id}/all:
+    get:
+      tags:
+        - Folder
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 123a
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{id}:
+    get:
+      tags:
+        - Folder
+      summary: get single folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder:
+    post:
+      tags:
+        - Folder
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Test Folder
+                client_id: '2'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/store-files:
+    post:
+      tags:
+        - Folder
+      summary: store file
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                  description: nullable
+                  example: asdw
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: folder_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{file_id}/file:
+    delete:
+      tags:
+        - Folder
+      summary: delete file
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: file_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '32'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}:
+    delete:
+      tags:
+        - Folder
+      summary: delete folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: folder_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/handover-template:
+    get:
+      tags:
+        - Handover > Template
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: 'value: 0 or 1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Handover > Template
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Title 3
+                tasks:
+                  - Task 1
+                  - Task 2
+                  - Task 3
+                status: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/handover-template/{handover_template_id}:
+    get:
+      tags:
+        - Handover > Template
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_template_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Handover > Template
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: title 3
+                tasks:
+                  - Task 1
+                  - Task 2
+                status: 1
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_template_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Handover > Template
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_template_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/handover-report/{handover_id}:
+    post:
+      tags:
+        - Handover > HandoverReport
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Title 1
+                description:
+                  type: string
+                  example: alsdjalkjdalwkdj
+                file:
+                  type: string
+                  format: binary
+                owner_id:
+                  type: string
+                  example: awkdj3132
+                deadline:
+                  type: string
+                  example: 2022/02/03
+                status:
+                  type: string
+                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '29'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/handover-report/{handover_report_id}:
+    post:
+      tags:
+        - Handover > HandoverReport
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Title 1 edited
+                description:
+                  type: string
+                  example: 'elajd '
+                file:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+                owner_id:
+                  type: integer
+                  example: '123'
+                status:
+                  type: string
+                deadline:
+                  type: string
+                  example: 2022/10/22
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_report_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Handover > HandoverReport
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_report_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/handover:
+    post:
+      tags:
+        - Handover
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  example: asd231
+                employee_id:
+                  type: string
+                  example: adw31
+                status:
+                  type: string
+                reports[0][title]:
+                  type: string
+                  example: Title 1
+                reports[0][description]:
+                  type: string
+                  example: alsdjalkjdalwkdj
+                reports[1][title]:
+                  type: string
+                  example: Title 1
+                reports[1][description]:
+                  type: string
+                  example: alsdjalkjdalwkdj
+                reports[0][file]:
+                  type: string
+                  format: binary
+                reports[1][file]:
+                  type: string
+                  format: binary
+                reports[0][status]:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Handover
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/handover/{handover_id}:
+    post:
+      tags:
+        - Handover
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  example: asd2312
+                employee_id:
+                  type: string
+                  example: adw312
+                status:
+                  type: string
+                  example: in-progress
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Handover
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '29'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Handover
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report-template:
+    get:
+      tags:
+        - Report Template
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Report Template
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Title 3
+                titles:
+                  - Task 1
+                  - Task 2
+                  - Task 3
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report-template/{report_template_id}:
+    get:
+      tags:
+        - Report Template
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: report_template_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Report Template
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: title 3 edited
+                titles:
+                  - Report 1
+                  - Report 2
+                  - Report 3
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: report_template_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report-template/{handover_template_id}:
+    delete:
+      tags:
+        - Report Template
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: handover_template_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report-title:
+    get:
+      tags:
+        - Report Title
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Report Title
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Title 3
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report-title/{report_title_id}:
+    get:
+      tags:
+        - Report Title
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: report_title_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Report Title
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: title 3 edited
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: report_title_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Report Title
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: report_title_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/client-date:
+    post:
+      tags:
+        - Client Date
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: abc-123
+                start_date: '2022-02-02'
+                end_date: '2022-12-12'
+                effective_date: '2022-12-13'
+                renew_date: '2022-12-20'
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/task-correction:
+    post:
+      tags:
+        - Task Correction
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                task_corrections:
+                  - task_id: task-123
+                    client_id: client-123
+                    employee_id: emp-123
+                    start_time: 2022-02-03 15:09
+                    total_seconds: 545343531.44
+                  - task_id: task-124
+                    client_id: client-124
+                    employee_id: emp-124
+                    start_time: '2022-03-03 15:09:23'
+                    total_seconds: 545343532.44
+                  - task_id: task-125
+                    client_id: client-125
+                    employee_id: emp-125
+                    start_time: '2022-04-03 15:09:23'
+                    total_seconds: 545343533.44
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/file/upload:
+    post:
+      tags:
+        - default
+      summary: ybc file upload
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                organization_id:
+                  type: string
+                  example: 33d5fc59-963d-4bb6-b429-117ee601826d
+                directory:
+                  type: string
+                  example: /budget/33d5fc59-963d-4bb6-b429-117ee601826e/asd
+                attachment:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
