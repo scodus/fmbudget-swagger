@@ -49,6 +49,8 @@ tags:
   - name: Attachment
   - name: client side
   - name: Folder
+  - name: Proporsal Template
+  - name: Proporsal
   - name: Handover
   - name: Handover > Template
   - name: Handover > HandoverReport
@@ -2959,25 +2961,30 @@ paths:
             schema:
               type: object
               properties:
+                submitted_by:
+                  type: integer
+                  example: '123'
                 file:
                   type: string
                   format: binary
                 title:
                   type: string
-                  example: Title 2
-                _method:
-                  type: string
-                  example: PUT
+                  example: Title 1
                 client_id:
                   type: integer
                   example: '1'
-                submitted_by:
-                  type: string
-                  example: adw
                 description:
                   type: string
+                  example: |-
+                    asldjwkldjalk
+                    asdlkwjakljd
                 report_title_id:
                   type: string
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -2992,9 +2999,8 @@ paths:
         - name: report_id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '146'
       responses:
         '200':
           description: Successful response
@@ -3578,6 +3584,129 @@ paths:
             type: integer
           required: true
           example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/proporsal-template:
+    get:
+      tags:
+        - Proporsal Template
+      summary: get proporsal template by organization id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Proporsal Template
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                company_name:
+                  type: string
+                  example: Dummy Company Edit
+                homepage_image:
+                  type: string
+                  format: binary
+                subpage_image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/proporsal/{client_id}:
+    get:
+      tags:
+        - Proporsal
+      summary: get proporsal by client id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
+        - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: asd-124
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/proporsal:
+    post:
+      tags:
+        - Proporsal
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: asd-124
+                proporsal_title: Dummy Proporsal Title
+                pages_data:
+                  - - type: text
+                      value: aldjwlkd
+                    - type: paragraphs
+                      value: |-
+                        aldjwlkd alkdjwa dalwkjd 
+                         aldwkdjadklj
+                    - type: h1
+                      value: h1 data here
+                  - - type: header
+                      value: header data here
+                    - type: footers
+                      value: footer here
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: organization-id
+          in: header
+          schema:
+            type: string
+          example: '{{organization_id}}'
       responses:
         '200':
           description: Successful response
@@ -4407,26 +4536,23 @@ paths:
               example:
                 task_corrections:
                   - task_id: task-123
-                    client_id: client-123
-                    employee_id: emp-123
+                    client_id: '2'
+                    employee_id: '123'
                     start_time: 2022-02-03 15:09
-                    total_seconds: 545343531.44
+                    total_seconds: 7200
                   - task_id: task-124
-                    client_id: client-124
-                    employee_id: emp-124
-                    start_time: '2022-03-03 15:09:23'
-                    total_seconds: 545343532.44
+                    client_id: '2'
+                    employee_id: '123'
+                    start_time: '2022-02-05 15:09:23'
+                    total_seconds: 10800.25
                   - task_id: task-125
-                    client_id: client-125
-                    employee_id: emp-125
-                    start_time: '2022-04-03 15:09:23'
-                    total_seconds: 545343533.44
+                    client_id: '2'
+                    employee_id: '123'
+                    start_time: '2022-02-06 15:09:23'
+                    total_seconds: 7200
+      security:
+        - noauthAuth: []
       parameters:
-        - name: organization-id
-          in: header
-          schema:
-            type: string
-          example: '{{organization_id}}'
         - name: Accept
           in: header
           schema:
