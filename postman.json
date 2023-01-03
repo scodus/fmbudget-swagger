@@ -4558,6 +4558,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -4575,18 +4585,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "file",
-									"type": "file",
-									"src": "/C:/Users/Leon Schiffer/Downloads/313994879_657842602458422_6848560307507054958_n (1).jpg"
-								},
-								{
-									"key": "title",
-									"value": "Title 2",
+									"key": "submitted_by",
+									"value": "123",
 									"type": "text"
 								},
 								{
-									"key": "_method",
-									"value": "PUT",
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/download (2).png"
+								},
+								{
+									"key": "title",
+									"value": "Title 1",
 									"type": "text"
 								},
 								{
@@ -4595,18 +4605,18 @@
 									"type": "text"
 								},
 								{
-									"key": "submitted_by",
-									"value": "adw",
-									"type": "text"
-								},
-								{
 									"key": "description",
-									"value": "",
+									"value": "asldjwkldjalk\nasdlkwjakljd",
 									"type": "text"
 								},
 								{
 									"key": "report_title_id",
 									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
 									"type": "text"
 								}
 							]
@@ -4624,7 +4634,7 @@
 							"variable": [
 								{
 									"key": "report_id",
-									"value": "146"
+									"value": null
 								}
 							]
 						}
@@ -5621,6 +5631,198 @@
 									"key": "folder_id",
 									"value": "16"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Proporsal Template",
+			"item": [
+				{
+					"name": "get proporsal template by organization id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/proporsal-template",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"proporsal-template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "company_name",
+									"value": "Dummy Company Edit",
+									"type": "text"
+								},
+								{
+									"key": "homepage_image",
+									"type": "file",
+									"src": "/C:/Users/Leon Schiffer/Downloads/61tkL-Rk5mL._AC_SR175,263_QL70_.jpg"
+								},
+								{
+									"key": "subpage_image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/proporsal-template",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"proporsal-template"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Proporsal",
+			"item": [
+				{
+					"name": "get proporsal by client id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/proporsal/:client_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"proporsal",
+								":client_id"
+							],
+							"variable": [
+								{
+									"key": "client_id",
+									"value": "asd-124"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{budget_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "organization-id",
+								"value": "{{organization_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_id\": \"asd-124\",\r\n    \"proporsal_title\": \"Dummy Proporsal Title\",\r\n    \"pages_data\": [\r\n        [\r\n            {\r\n                \"type\": \"text\",\r\n                \"value\": \"aldjwlkd\"\r\n            },\r\n            {\r\n                \"type\": \"paragraphs\",\r\n                \"value\": \"aldjwlkd alkdjwa dalwkjd \\n aldwkdjadklj\"\r\n            },\r\n            {\r\n                \"type\": \"h1\",\r\n                \"value\": \"h1 data here\"\r\n            }\r\n        ],\r\n        [\r\n            {\r\n                \"type\": \"header\",\r\n                \"value\": \"header data here\"\r\n            },\r\n            {\r\n                \"type\": \"footers\",\r\n                \"value\": \"footer here\"\r\n            }\r\n        ]\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/proporsal",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"proporsal"
 							]
 						}
 					},
@@ -6927,12 +7129,16 @@
 				{
 					"name": "store",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "organization-id",
 								"value": "{{organization_id}}",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "Accept",
@@ -6942,7 +7148,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"task_corrections\": [\r\n        {\r\n            \"task_id\": \"task-123\",\r\n            \"client_id\": \"client-123\",\r\n            \"employee_id\": \"emp-123\",\r\n            \"start_time\": \"2022-02-03 15:09\",\r\n            \"total_seconds\": 545343531.44\r\n        },\r\n        {\r\n            \"task_id\": \"task-124\",\r\n            \"client_id\": \"client-124\",\r\n            \"employee_id\": \"emp-124\",\r\n            \"start_time\": \"2022-03-03 15:09:23\",\r\n            \"total_seconds\": 545343532.44\r\n        },\r\n        {\r\n            \"task_id\": \"task-125\",\r\n            \"client_id\": \"client-125\",\r\n            \"employee_id\": \"emp-125\",\r\n            \"start_time\": \"2022-04-03 15:09:23\",\r\n            \"total_seconds\": 545343533.44\r\n        }\r\n        \r\n    ]\r\n}",
+							"raw": "    {\r\n    \"task_corrections\": [\r\n        {\r\n            \"task_id\": \"task-123\",\r\n            \"client_id\": \"2\",\r\n            \"employee_id\": \"123\",\r\n            \"start_time\": \"2022-02-03 15:09\",\r\n            \"total_seconds\": 7200\r\n        },\r\n        {\r\n            \"task_id\": \"task-124\",\r\n            \"client_id\": \"2\",\r\n            \"employee_id\": \"123\",\r\n            \"start_time\": \"2022-02-05 15:09:23\",\r\n            \"total_seconds\": 10800.25\r\n        },\r\n        {\r\n            \"task_id\": \"task-125\",\r\n            \"client_id\": \"2\",\r\n            \"employee_id\": \"123\",\r\n            \"start_time\": \"2022-02-06 15:09:23\",\r\n            \"total_seconds\": 7200\r\n        }\r\n        \r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
